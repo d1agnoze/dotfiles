@@ -1,9 +1,36 @@
 local overrides = require "custom.configs.overrides"
-
+local dap = require('custom.configs.dap-nvim')
 ---@type NvPluginSpec[]
 local plugins = {
 
   -- Override plugin definition options
+  {"mfussenegger/nvim-dap"},
+  {"rcarriga/nvim-dap-ui",
+    config = function()
+      local dapr = require('dap')
+      local dapui = require('dapui')
+      dapui.setup()
+      dapr.listeners.after.event_initialized["dapui_config"] = function ()
+        dapui.open()
+      end
+      dapr.listeners.before.event_terminated["dapui_config"] = function ()
+        dapui.close()
+      end
+      dapr.listeners.before.event_exited["dapui_config"] = function ()
+        dapui.close()
+      end
+    end
+  },
+  {"jay-babu/mason-nvim-dap.nvim",
+    cmd="Dap",
+    dependencies={
+      "rcarriga/nvim-dap-ui",
+      "mfussenegger/nvim-dap"
+    },
+    config = function ()
+      require("mason-nvim-dap").setup(dap)
+    end
+  },
   { "tpope/vim-surround", lazy = false },
   { "tpope/vim-dispatch", lazy = false },
   { "nvim-lua/plenary.nvim", lazy = false },

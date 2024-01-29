@@ -1,3 +1,6 @@
 [user]
 	email = dacvuong202@gmail.com
 	name = vdac
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

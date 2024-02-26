@@ -29,7 +29,7 @@ local plugins = {
 			require("neoscroll").setup({
 				mappings = { "<C-u>", "<C-d>" },
 				hide_cursor = false,
-				stop_eof = true,
+				stop_eof = false,
 				respect_scrolloff = false,
 				cursor_scrolls_alone = false,
 				easing_function = nil,
@@ -82,11 +82,6 @@ local plugins = {
 			vim.g.closetag_xhtml_filetypes = "xhtml,jsx,tsx"
 			vim.g.closetag_shortcut = ">"
 			vim.g.closetag_close_shortcut = "<leader>>"
-			--  let g:closetag_regions = { "typescript.tsx": "jsxRegion,tsxRegion",
-			--  "javascript.jsx": "jsxRegion",
-			--     "typescriptreact": "jsxRegion,tsxRegion",
-			--     "javascriptreact": "jsxRegion",
-			-- }
 		end,
 	},
 	{
@@ -99,6 +94,40 @@ local plugins = {
 			vim.keymap.set("n", "<leader>a", mark.add_file)
 			vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
 		end,
+	},
+	{
+		"Exafunction/codeium.vim",
+		event = "BufEnter",
+		config = function()
+			vim.keymap.set("i", "<C-q>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true, silent = true })
+			vim.keymap.set("i", "<c-;>", function()
+				return vim.fn["codeium#CycleCompletions"](1)
+			end, { expr = true, silent = true })
+			vim.keymap.set("i", "<c-,>", function()
+				return vim.fn["codeium#CycleCompletions"](-1)
+			end, { expr = true, silent = true })
+			vim.keymap.set("i", "<c-x>", function()
+				return vim.fn["codeium#Clear"]()
+			end, { expr = true, silent = true })
+		end,
+	},
+	{
+		"dgagn/diagflow.nvim",
+		event = "LspAttach",
+		config = function()
+			require("diagflow").setup({
+				format = function(diagnostic)
+					return "[LSP] " .. diagnostic.message
+				end,
+				show_borders = true,
+			})
+		end,
+		opts = {
+			update_event = { "DiagnosticChanged", ... },
+      scope = 'line'
+		},
 	},
 	{
 		"neovim/nvim-lspconfig",

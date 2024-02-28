@@ -44,6 +44,7 @@ M.mason = {
     --assembly
     "asm-lsp",
     "gopls",
+    "tailwindcss-language-server",
   },
 }
 

@@ -11,6 +11,7 @@ sudo rm -f ~/.bashrc
 ln -s ~/dotfiles/.bashrc ~/.bashrc
 
 echo "linking tmux"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/.tmux ~/
 

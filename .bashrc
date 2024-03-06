@@ -133,3 +133,5 @@ function ranger {
     fi
     command rm -f -- "$tempfile" 2>/dev/null
 }
+
+source ~/dotfiles/tools/NvimSwitcher.sh

@@ -13,7 +13,8 @@ ln -s ~/dotfiles/.bashrc ~/.bashrc
 echo "linking tmux"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
-ln -sf ~/dotfiles/.tmux ~/
+
+echo -n 'type this in terminal if tmux is already running \ntmux source ~/.tmux.conf'
 
 echo "Linking gitconfig"
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig

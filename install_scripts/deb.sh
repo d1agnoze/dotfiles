@@ -11,11 +11,11 @@ select distro in "Arch" "Ubuntu"; do
   echo "Selected distrobution: $distro"
     case $distro in
         Arch)
-            ~/dotfiles/install_scripts/arch.sh
+            source ~/dotfiles/install_scripts/arch.sh
             break
             ;;
         Ubuntu)
-            ~/dotfiles/install_scripts/ubuntu.sh
+            source ~/dotfiles/install_scripts/ubuntu.sh
             break
             ;;
         *)

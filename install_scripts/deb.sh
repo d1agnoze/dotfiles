@@ -23,5 +23,4 @@ select distro in "Arch" "Ubuntu"; do
             ;;
     esac
 done
-~/dotfiles/install_scripts/symlink.sh
 exit 0

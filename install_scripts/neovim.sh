@@ -16,10 +16,10 @@ git clone https://github.com/d1agnoze/Mininal.nvim.git ~/dotfiles/.config/nvim
 echo "Remeber to run :PlugInstall on default profiles"
 
 #Nvchad
-git clone https://github.com/NvChad/NvChad ~/.config/nvims/Nvchad --depth 0
+git clone https://github.com/NvChad/NvChad ~/.config/nvims/Nvchad --depth 1
 
 #symlink
 echo "linking neovim configs"
 rm -rf ~/.config/nvims/Nvchad/lua/custom
-ln -sf ~/dotfiles/.config/nvim/lua/custom/ ~/.config/nvims/Nvchad/lua/
+ln -sf ~/dotfiles/.config/nvims/Nvchad/lua/custom/ ~/.config/nvims/Nvchad/lua/
 ln -sf ~/dotfiles/.config/nvim/ ~/.config/nvim/

@@ -8,9 +8,10 @@ sudo pacman -S ranger
 sudo pacman -S fzf
 
 
-#yay no long needed since EndeavourOS have it in installation process, uncomment these if you need yay
-#echo "Installing yay"
-#pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-#echo "Installing peaclock, please select peaclock from the AUR list"
-#yay peaclock
+#yay no long needed since EndeavourOS have it in installation process
+#uncomment these if you need yay
+#
+#
+# echo "Installing yay"
+# pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 

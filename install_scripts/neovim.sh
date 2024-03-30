@@ -11,4 +11,4 @@ rm -rf ~/.local/share/nvim
 
 #symlink
 echo "linking neovim configs"
-ln -sf ~/dotfiles/.config/nvim/ ~/.config/nvim/
+ln -sf ~/dotfiles/.config/nvim/ ~/.config/

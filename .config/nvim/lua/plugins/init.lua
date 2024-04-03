@@ -66,6 +66,12 @@ return {
         "typescript",
         "cpp",
         "rust",
+        "tsx",
+        "go",
+        "json",
+        "json5",
+        "python",
+        "jsdoc"
       },
     },
   },

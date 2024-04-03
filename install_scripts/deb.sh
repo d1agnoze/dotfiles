@@ -6,6 +6,10 @@
 #                    MAKE SURE TO RUN THIS SCRiPT WITH SUDO PRIVILEGE
 #
 #===============================================================================
+
+echo "Installing nvm"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
 echo "Select your linux distro:"
 select distro in "Arch" "Ubuntu"; do
   echo "Selected distrobution: $distro"
@@ -19,8 +23,11 @@ select distro in "Arch" "Ubuntu"; do
             break
             ;;
         *)
-            echo "Vui lòng chọn 1 hoặc 2."
+            echo "Invalid option. Please try again."
             ;;
     esac
 done
+
+nvm install --lts
+
 exit 0

@@ -43,6 +43,13 @@ return {
         "html-lsp",
         "css-lsp",
         "prettier",
+        "typescript-language-server",
+        "emmet-language-server",
+        "clangd",
+        "tailwindcss-language-server",
+        "cmake-language-server",
+        "bash-language-server",
+        "gopls"
       },
     },
   },

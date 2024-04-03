@@ -22,3 +22,4 @@ function ranger {
 #tmux
 alias ta='tmux attach'
 alias tks='tmux kill-session'
+alias c='clear'

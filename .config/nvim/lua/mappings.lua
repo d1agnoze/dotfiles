@@ -47,3 +47,11 @@ map(
   "<cmd>lua require('harpoon.ui').nav_file(3)<cr>",
   { nowait = true, remap = true, desc = "harpoon file 3" }
 )
+
+-- Remap telescope do find dotfiles
+map(
+  "n",
+  "<leader>ff",
+  "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
+  { noremap = true }
+)

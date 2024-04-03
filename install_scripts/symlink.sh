@@ -8,18 +8,13 @@ sudo rm -rf ~/.gitconfig > /dev/null 2>&1
 
 echo "Linking bashrc"
 sudo rm -f ~/.bashrc
+sudo rm -f ~/.profile
 sudo rm -f ~/.bash_aliases
-ln -s ~/dotfiles/.bashrc ~/.bashrc
-ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
 
 echo "linking tmux"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 echo -n 'type this in terminal if tmux is already running \ntmux source ~/.tmux.conf'
 
-echo "Linking gitconfig"
-ln -s ~/dotfiles/.gitconfig ~/.gitconfig
-
-echo "Linking neofetch config"
-ln -sf ~/dotfiles/.config/neofetch/ ~/.config/
+stow -D .
+stow --adopt .

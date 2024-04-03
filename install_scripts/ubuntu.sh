@@ -1,6 +1,5 @@
 echo "Installing programs"
 sudo apt install tmux
-sudo apt install nodejs npm
 sudo apt install python
 sudo apt install gcc make ripgrep cmake
 sudo apt install python3-venv 

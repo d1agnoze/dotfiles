@@ -52,7 +52,7 @@ return {
         "bash-language-server",
         "gopls",
         "clang-format",
-        "cmake_format",
+        "cmakelang",
         "prettierd",
       },
     },

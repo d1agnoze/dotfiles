@@ -49,7 +49,7 @@ return {
         "tailwindcss-language-server",
         "cmake-language-server",
         "bash-language-server",
-        "gopls"
+        "gopls",
       },
     },
   },

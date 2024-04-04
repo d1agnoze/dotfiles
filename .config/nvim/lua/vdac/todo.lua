@@ -16,6 +16,7 @@ local opt = {
     NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
     TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
     IMPORTANT = { icon = "⚠ ", color = "test", alt = { "IMP", "CAUTIOUS" } },
+    ERROR = { icon = "😳", color = "pink", alt = { "ERR", "!!!" } },
   },
   gui_style = {
     fg = "NONE", -- The gui style to use for the fg highlight group.
@@ -44,10 +45,11 @@ local opt = {
     error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
     warning = { "DiagnosticWarn", "WarningMsg", "#FBBF24" },
     info = { "DiagnosticInfo", "#2563EB" },
-    hint = { "DiagnosticHint", "#10B981" },
+    hint = { "#10B981" },
     default = { "Identifier", "#7C3AED" },
     test = { "Identifier", "#FF00FF" },
     important = { "#FF00FF" },
+    pink = { "#fd798f" },
   },
   search = {
     command = "rg",

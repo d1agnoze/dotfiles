@@ -18,7 +18,7 @@ return {
       local telescope = require "telescope"
       telescope.setup(opts)
 
-     -- load extensions
+      -- load extensions
       for _, ext in ipairs(opts.extensions_list) do
         telescope.load_extension(ext)
       end
@@ -37,6 +37,7 @@ return {
   {
     "williamboman/mason.nvim",
     opts = {
+      -- INFO: LSP, DAP, LINTER, FORMATTER
       ensure_installed = {
         "lua-language-server",
         "stylua",
@@ -50,6 +51,9 @@ return {
         "cmake-language-server",
         "bash-language-server",
         "gopls",
+        "clang-format",
+        "cmake_format",
+        "prettierd",
       },
     },
   },
@@ -57,6 +61,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
+      -- INFO: syntax highlighter
       ensure_installed = {
         "vim",
         "lua",
@@ -71,7 +76,7 @@ return {
         "json",
         "json5",
         "python",
-        "jsdoc"
+        "jsdoc",
       },
     },
   },

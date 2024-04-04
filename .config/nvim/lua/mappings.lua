@@ -56,4 +56,17 @@ map(
   { noremap = true }
 )
 
-map("n", "<leader>cl", "0vg_", { noremap = true, desc = "select line" })
+map("n", "<leader>cl", "_vg_", { noremap = true, desc = "select line" })
+
+-- FILE DEPENDENT MAPPINGS
+-- JSX binding
+-- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+--   pattern = { "*.tsx", "*.jsx" },
+--   callback = function()
+--     map("v", "<Leader>bl", ":normal S{vi{gbJ", { noremap = true, desc = "React block comment" })
+--   end,
+-- })
+
+-- INFO: UNMAP
+vim.keymap.del("n", "<leader>v")
+vim.keymap.del("n", "<leader>h")

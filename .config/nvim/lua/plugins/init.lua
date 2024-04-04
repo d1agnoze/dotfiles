@@ -44,7 +44,7 @@ return {
         "css-lsp",
         "prettier",
         "typescript-language-server",
-        "emmet-language-server",
+        "emmet-ls",
         "clangd",
         "tailwindcss-language-server",
         "cmake-language-server",

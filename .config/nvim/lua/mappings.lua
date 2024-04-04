@@ -55,3 +55,5 @@ map(
   "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
   { noremap = true }
 )
+
+map("n", "<leader>cl", "0vg_", { noremap = true, desc = "select line" })

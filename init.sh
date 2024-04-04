@@ -6,13 +6,14 @@ sudo chmod -R 777 ~/dotfiles/install_scripts
 #32: green
 #31: red
 
-echo -e "\e[0;34mInstall options (neovim only, full-system setup):\e[0m"
-select distro in "Neovim" "Full"; do
+echo -e "\e[0;34mInstall options (symlink only, full-system setup):\e[0m"
+select distro in "Symlink" "Full"; do
     echo -e "\e[0;32mInstalling neovim\e[0m"
     ~/dotfiles/install_scripts/neovim.sh.sh
     case $distro in
         Neovim)
             source ~/dotfiles/install_scripts/neovim.sh
+            source ~/dotfiles/install_scripts/symlink.sh
             break
             ;;
         Full)

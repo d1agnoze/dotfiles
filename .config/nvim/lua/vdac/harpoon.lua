@@ -1,4 +1,35 @@
-local mark = require "harpoon.mark"
-local ui = require "harpoon.ui"
-vim.keymap.set("n", "<leader>a", mark.add_file)
-vim.keymap.set("n", "<leader>h", ui.toggle_quick_menu)
+local M = {}
+-- REQUIRED
+-- REQUIRED
+M.config = function()
+  local harpoon = require "harpoon"
+  harpoon:setup({})
+end
+
+-- basic telescope configuration
+local conf = require("telescope.config").values
+local function toggle_telescope(harpoon_files)
+  local file_paths = {}
+  for _, item in ipairs(harpoon_files.items) do
+    table.insert(file_paths, item.value)
+  end
+
+  require("telescope.pickers")
+    .new({}, {
+      prompt_title = "Harpoon",
+      finder = require("telescope.finders").new_table { results = file_paths },
+      previewer = conf.file_previewer {},
+      sorter = conf.generic_sorter {},
+    })
+    :find()
+end
+
+M.keys = {
+  { "<leader>a", function() require "harpoon":list():add() end, desc = "harpoon file", },
+  { "<leader>fn", function() toggle_telescope(require "harpoon":list()) end, desc = "harpoon menu", },
+  { "<C-h>", function() require "harpoon".ui:toggle_quick_menu(require "harpoon":list()) end, desc = "harpoon quick menu", },
+  { "<C-j>", function() require "harpoon":list():select(1) end, desc = "harpoon to file 1", },
+  { "<C-k>", function() require "harpoon":list():select(2) end, desc = "harpoon to file 2", },
+  { "<C-l>", function() require "harpoon":list():select(3) end, desc = "harpoon to file 3", },
+}
+return M

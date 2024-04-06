@@ -29,31 +29,12 @@ map(
 map("n", "<leader>ll", "zR", { noremap = true, desc = "open all folds" })
 map("n", "<leader>la", "zM", { noremap = true, desc = "close all folds" })
 
-map(
-  "n",
-  "<C-k>",
-  "<cmd>lua require('harpoon.ui').nav_file(2)<cr>",
-  { nowait = true, remap = true, desc = "harpoon file 1" }
-)
-map(
-  "n",
-  "<C-j>",
-  "<cmd>lua require('harpoon.ui').nav_file(1)<cr>",
-  { nowait = true, remap = true, desc = "harpoon file 2" }
-)
-map(
-  "n",
-  "<C-l>",
-  "<cmd>lua require('harpoon.ui').nav_file(3)<cr>",
-  { nowait = true, remap = true, desc = "harpoon file 3" }
-)
-
 -- Remap telescope do find dotfiles
 map(
   "n",
   "<leader>ff",
   "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
-  { noremap = true }
+  { noremap = true, desc = "find files" }
 )
 
 map("n", "<leader>cl", "_vg_", { noremap = true, desc = "select line" })

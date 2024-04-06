@@ -134,11 +134,12 @@ return {
   },
   {
     "ThePrimeagen/harpoon",
-    lazy = false,
-    init = function()
-      --harpoon map
-      require "vdac.harpoon"
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("vdac.harpoon").config()
     end,
+    keys = require("vdac.harpoon").keys,
   },
   {
     "Exafunction/codeium.vim",

@@ -1,11 +1,5 @@
 local M = {}
 -- REQUIRED
--- REQUIRED
-M.config = function()
-  local harpoon = require "harpoon"
-  harpoon:setup({})
-end
-
 -- basic telescope configuration
 local conf = require("telescope.config").values
 local function toggle_telescope(harpoon_files)
@@ -23,13 +17,18 @@ local function toggle_telescope(harpoon_files)
     })
     :find()
 end
+-- REQUIRED
+M.config = function()
+  local harpoon = require "harpoon"
+  harpoon:setup {}
 
-M.keys = {
-  { "<leader>a", function() require "harpoon":list():add() end, desc = "harpoon file", },
-  { "<leader>fn", function() toggle_telescope(require "harpoon":list()) end, desc = "harpoon menu", },
-  { "<C-h>", function() require "harpoon".ui:toggle_quick_menu(require "harpoon":list()) end, desc = "harpoon quick menu", },
-  { "<C-j>", function() require "harpoon":list():select(1) end, desc = "harpoon to file 1", },
-  { "<C-k>", function() require "harpoon":list():select(2) end, desc = "harpoon to file 2", },
-  { "<C-l>", function() require "harpoon":list():select(3) end, desc = "harpoon to file 3", },
-}
+  vim.keymap.set("n", "<leader>a", function()
+    require("harpoon"):list():add()
+  end, { desc = "harpoon file" })
+
+  vim.keymap.set("n", "<leader>fn", function()
+    toggle_telescope(require("harpoon"):list())
+  end, { desc = "harpoon menu" })
+end
+
 return M

@@ -51,3 +51,13 @@ map("n", "<leader>cl", "_vg_", { noremap = true, desc = "select line" })
 -- INFO: UNMAP
 vim.keymap.del("n", "<leader>v")
 vim.keymap.del("n", "<leader>h")
+
+vim.keymap.set(
+  "n",
+  "<C-h>",
+  ":lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<CR>",
+  { desc = "harpoon quick menu" }
+)
+vim.keymap.set("n", "<C-j>", ":lua require('harpoon'):list():select(1)<CR>", { desc = "harpoon to file 1" })
+vim.keymap.set("n", "<C-k>", ":lua require('harpoon'):list():select(2)<CR>", { desc = "harpoon to file 2" })
+vim.keymap.set("n", "<C-l>", ":lua require('harpoon'):list():select(3)<CR>", { desc = "harpoon to file 3" })

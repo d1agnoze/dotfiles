@@ -44,14 +44,14 @@ local ffc = s(
     { i(1, "async"), i(2, "name"), i(3, "args") }
   )
 )
-local tryct = s(
-  { trig = "tryct", dscr = "Try catch" },
+local tryc = s(
+  { trig = "tryc", dscr = "try catch" },
   fmta(
     [[
-                try{
-                <>
-                }catch (err: any){}
-                              ]],
+    try {
+      <>
+    }catch (err: any){}
+              ]],
     { i(1, "") }
   )
 )
@@ -61,8 +61,8 @@ local prdate = s({ trig = "date", namr = "Date", dscr = "Date in the form of YYY
 
 ls.add_snippets(nil, {
   all = { prdate },
-  typescript = { sfc, ffc, clog, tryct },
-  javascript = { sfc, ffc, clog, tryct },
-  typescriptreact = { sfc, ffc, clog, tryct },
-  javascriptreact = { sfc, ffc, clog, tryct },
+  typescript = { sfc, ffc, clog, tryc },
+  javascript = { sfc, ffc, clog, tryc },
+  typescriptreact = { sfc, ffc, clog, tryc },
+  javascriptreact = { sfc, ffc, clog, tryc },
 })

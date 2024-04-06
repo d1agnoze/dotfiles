@@ -36,55 +36,19 @@ return {
 
   {
     "williamboman/mason.nvim",
-    opts = {
-      -- INFO: LSP, DAP, LINTER, FORMATTER
-      ensure_installed = {
-        "lua-language-server",
-        "stylua",
-        "html-lsp",
-        "css-lsp",
-        "prettier",
-        "typescript-language-server",
-        "emmet-ls",
-        "clangd",
-        "tailwindcss-language-server",
-        "cmake-language-server",
-        "bash-language-server",
-        "gopls",
-        "clang-format",
-        "cmakelang",
-        "prettierd",
-      },
-    },
+    opts = require "vdac.mason",
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      -- INFO: syntax highlighter
-      ensure_installed = {
-        "vim",
-        "lua",
-        "vimdoc",
-        "html",
-        "css",
-        "typescript",
-        "cpp",
-        "rust",
-        "tsx",
-        "go",
-        "json",
-        "json5",
-        "python",
-        "jsdoc",
-      },
-    },
+    opts = require "vdac.tree-sitter",
   },
 
   -- Override plugin definition options
   { "mfussenegger/nvim-dap" },
   {
     "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     config = function()
       require "vdac.dap_ui"
     end,
@@ -97,7 +61,8 @@ return {
       "mfussenegger/nvim-dap",
     },
     config = function()
-      require("mason-nvim-dap").setup {}
+      local opt = require "vdac.mason-dap"
+      require("mason-nvim-dap").setup(opt)
     end,
   },
   { "tpope/vim-surround", lazy = false },

@@ -23,8 +23,3 @@ function ranger {
 alias ta='tmux attach'
 alias tks='tmux kill-session'
 alias c='clear'
-
-function gcp() {
-  git commit -a -m ""$1""
-  git push
-}

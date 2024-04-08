@@ -22,13 +22,14 @@ local sfc = s(
   fmta(
     [[ 
                     const <> = ( <> ) =>> {
-                      return ();
+                      return <<div>><> Works just fine!<</div>>;
                     }
                     export default <>
                   ]],
     {
       i(1),
       i(2),
+      rep(1),
       rep(1),
     }
   )
@@ -38,10 +39,10 @@ local ffc = s(
   fmta(
     [[
                 export default <> function <> (<>){
-                  return ();
+                  return <<div>>Hello from <>!<</div>>;
                 }
               ]],
-    { i(1, "async"), i(2, "name"), i(3, "args") }
+    { i(1, "async"), i(2, "name"), i(3, "args"), rep(2) }
   )
 )
 local tryc = s(

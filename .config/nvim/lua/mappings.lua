@@ -28,6 +28,7 @@ map(
 
 map("n", "<leader>ll", "zR", { noremap = true, desc = "open all folds" })
 map("n", "<leader>la", "zM", { noremap = true, desc = "close all folds" })
+map("n", "<leader>lc", "zA", { noremap = true, desc = "Toggle all folds under cursor" })
 
 -- Remap telescope do find dotfiles
 map(

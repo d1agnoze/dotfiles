@@ -10,6 +10,7 @@ local options = {
     typescriptreact = { "prettierd" },
     javascript = { "prettierd" },
     javascriptreact = { "prettier" },
+    proto = { "buf" },
   },
 
   -- format_on_save = {

@@ -8,4 +8,5 @@ sudo apt install build-essential
 sudo apt install libpthread-stubs0-dev
 sudo apt install libicu-dev
 sudo apt install fzf zip unzip
+sudo apt install highlight
 

@@ -23,3 +23,9 @@ function ranger {
 alias ta='tmux attach'
 alias tks='tmux kill-session'
 alias c='clear'
+
+
+#WSL shortcuts
+if [[ $(grep -i Microsoft /proc/version) ]]; then
+  alias wex='explorer.exe .'
+fi

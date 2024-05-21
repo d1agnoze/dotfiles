@@ -1,5 +1,12 @@
 return {
   {
+    "leoluz/nvim-dap-go",
+    config = function()
+      require("dap-go").setup()
+      require("dap.ext.vscode").load_launchjs(nil, {})
+    end,
+  },
+  {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     config = function()
@@ -59,10 +66,12 @@ return {
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "mfussenegger/nvim-dap",
+      "leoluz/nvim-dap-go",
     },
     config = function()
       local opt = require "vdac.mason-dap"
       require("mason-nvim-dap").setup(opt)
+      require "vdac.dap_keymap"
     end,
   },
   { "tpope/vim-surround", lazy = false },

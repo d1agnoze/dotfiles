@@ -6,6 +6,8 @@ sudo pacman -S gcc make ripgrep
 sudo pacman -S neofetch
 sudo pacman -S ranger
 sudo pacman -S fzf
+sudo pacman -S highlight grc
+sudo pacman -S zip unzip
 
 
 #yay no long needed since EndeavourOS have it in installation process

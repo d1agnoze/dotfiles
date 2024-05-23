@@ -14,9 +14,9 @@ nvm install --lts
 echo "NOTE: you already have all the dependencies? run neovim.sh and symlink.sh to begin linking"
 
 echo "Select your linux distro:"
-select distro in "Arch" "Ubuntu"; do
-  echo "Selected distrobution: $distro"
-    case $distro in
+select choice in "Arch" "Ubuntu"; do
+  echo "Selected distrobution: $choice"
+    case $choice in
         Arch)
             source ~/dotfiles/install_scripts/arch.sh
             break

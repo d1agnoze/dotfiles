@@ -19,6 +19,11 @@ function ranger {
     command rm -f -- "$tempfile" 2>/dev/null
 }
 
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
 #tmux
 alias ta='tmux attach'
 alias tks='tmux kill-session'

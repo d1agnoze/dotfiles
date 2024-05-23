@@ -25,13 +25,17 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-export PATH=$PATH:/usr/local/go/bin
+
+# add go path
+PATH="$PATH:/usr/local/go/bin"
+
+# add this after install protoc
+PATH="$PATH:$(go env GOPATH)/bin"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-export PATH="$PATH:$(go env GOPATH)/bin"
 export VISUAL=nvim;
 export EDITOR=vim;
 
-
+export PATH

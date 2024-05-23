@@ -16,3 +16,7 @@ end
 dap.listeners.before.event_exited.dapui_config = function()
   dapui.close()
 end
+
+vim.keymap.set("n", "<space>de", function()
+  require("dapui").eval(nil, { enter = true })
+end, { desc = "debuger evaluate", noremap = true, silent = true })

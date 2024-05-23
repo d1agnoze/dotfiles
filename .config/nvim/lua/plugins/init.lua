@@ -1,14 +1,7 @@
 return {
-  {
-    "leoluz/nvim-dap-go",
-    config = function()
-      require("dap-go").setup()
-      require("dap.ext.vscode").load_launchjs(nil, {})
-    end,
-  },
+  ---ESSENTIALS
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
     config = function()
       require "configs.conform"
     end,
@@ -29,59 +22,8 @@ return {
       for _, ext in ipairs(opts.extensions_list) do
         telescope.load_extension(ext)
       end
+      -- change selection color
       vim.cmd [[highlight TelescopeSelection guifg=black guibg=#32CD32]]
-    end,
-  },
-  -- These are some examples, uncomment them if you want to see them work!
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require("nvchad.configs.lspconfig").defaults()
-      require "configs.lspconfig"
-    end,
-  },
-
-  {
-    "williamboman/mason.nvim",
-    opts = require "vdac.mason",
-  },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = require "vdac.tree-sitter",
-  },
-
-  -- Override plugin definition options
-  { "mfussenegger/nvim-dap" },
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    config = function()
-      require "vdac.dap_ui"
-    end,
-  },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    cmd = "Dap",
-    dependencies = {
-      "rcarriga/nvim-dap-ui",
-      "mfussenegger/nvim-dap",
-      "leoluz/nvim-dap-go",
-    },
-    config = function()
-      local opt = require "vdac.mason-dap"
-      require("mason-nvim-dap").setup(opt)
-      require "vdac.dap_keymap"
-    end,
-  },
-  { "tpope/vim-surround", lazy = false },
-  { "tpope/vim-dispatch", lazy = false },
-  { "nvim-lua/plenary.nvim", lazy = false },
-  {
-    "windwp/nvim-ts-autotag",
-    event = "BufRead",
-    config = function()
-      require("nvim-ts-autotag").setup()
     end,
   },
   {
@@ -93,19 +35,26 @@ return {
       require "vdac.snip"
     end,
   },
+
   {
-    "alvan/vim-closetag",
-    event = "BufRead",
-    enabled = false,
-    setup = function()
-      vim.g.closetag_emptyTags_caseSensitive = 1
-      vim.g.closetag_xhtml_filenames = "*.xhtml,*.jsx,tsx"
-      vim.g.closetag_filetypes = "html,xhtml,phtml"
-      vim.g.closetag_xhtml_filetypes = "xhtml,jsx,tsx"
-      vim.g.closetag_shortcut = ">"
-      vim.g.closetag_close_shortcut = "<leader>>"
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
     end,
   },
+  {
+    "williamboman/mason.nvim",
+    opts = require "vdac.mason",
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = require "vdac.tree-sitter",
+  },
+  { "tpope/vim-dispatch", lazy = false },
+  { "nvim-lua/plenary.nvim", lazy = false },
+  -----------------------------------------------------
+  -- TOOLS
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -122,11 +71,14 @@ return {
       require "vdac.codepium"
     end,
   },
+  -----------------------------------------------
+  --- BETTER EXPERIENCE
+  { "tpope/vim-surround", lazy = false },
   {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
+    "windwp/nvim-ts-autotag",
+    event = "BufRead",
     config = function()
-      require("better_escape").setup()
+      require("nvim-ts-autotag").setup()
     end,
   },
   {
@@ -149,4 +101,36 @@ return {
       },
     },
   },
+  -------------------------------
+  -- DAP/DEBUG SECTION
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "leoluz/nvim-dap-go",
+      "nvim-neotest/nvim-nio",
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
+      "williamboman/mason.nvim",
+    },
+    keys = { "<C-b>" },
+    config = function()
+      require("nvim-dap-virtual-text").setup()
+      require("dap.ext.vscode").load_launchjs(nil, {})
+      require "vdac.dap_ui"
+      require "vdac.dap_keymap"
+      require("dap-go").setup()
+    end,
+  },
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    cmd = { "DapInstall", "DapUninstall" },
+    dependencies = { "mfussenegger/nvim-dap", "williamboman/mason.nvim" },
+    config = function()
+      local opt = require "vdac.mason-dap"
+      require("mason-nvim-dap").setup(opt)
+    end,
+  },
+  ------------------------------
 }

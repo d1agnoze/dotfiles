@@ -3,7 +3,7 @@ local M = {}
 -- REQUIRED
 M.config = function()
   local harpoon = require "harpoon"
-  harpoon:setup({})
+  harpoon:setup {}
 end
 
 -- basic telescope configuration
@@ -25,7 +25,26 @@ local function toggle_telescope(harpoon_files)
 end
 
 M.keys = {
-  { "<leader>a", function() require "harpoon":list():add() end, desc = "harpoon file", },
-  { "<leader>fn", function() toggle_telescope(require "harpoon":list()) end, desc = "harpoon menu", },
+  {
+    "<leader>a",
+    function()
+      require("harpoon"):list():add()
+    end,
+    desc = "harpoon file",
+  },
+  {
+    "<leader>fn",
+    function()
+      toggle_telescope(require("harpoon"):list())
+    end,
+    desc = "harpoon menu",
+  },
+  {
+    "<C-h>",
+    function()
+      require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+    end,
+    desc = "harpoon menu",
+  },
 }
 return M

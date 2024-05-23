@@ -54,3 +54,10 @@ map(
 map("n", "<C-j>", ":lua  require 'harpoon':list():select(1)<CR>", { desc = "harpoon to file 1", silent = true })
 map("n", "<C-k>", ":lua  require 'harpoon':list():select(2)<CR>", { desc = "harpoon to file 2", silent = true })
 map("n", "<C-l>", ":lua  require 'harpoon':list():select(3)<CR>", { desc = "harpoon to file 3", silent = true })
+
+
+--Command to open Mason, Lsp, Conform, Lazy
+map("n", "<leader>sm", ":Mason<CR>", { desc = "Open Mason", silent = true })
+map("n", "<leader>ss", ":LspInfo<CR>", { desc = "Open LspInfo", silent = true })
+map("n", "<leader>sl", ":Lazy<CR>", { desc = "Open Lazy", silent = true })
+map("n", "<leader>sc", ":ConformInfo<CR>", { desc = "Open Conform", silent = true })

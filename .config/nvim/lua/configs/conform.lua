@@ -11,6 +11,7 @@ local options = {
     javascript = { "prettierd" },
     javascriptreact = { "prettier" },
     proto = { "buf" },
+    bash = { "beautysh" },
   },
 
   -- format_on_save = {

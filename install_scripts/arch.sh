@@ -1,7 +1,9 @@
+# this file have not been tested
+
 echo "Installing base dependencies"
 sudo pacman -S tmux
 sudo pacman -S nodejs npm
-sudo pacman -S python
+sudo pacman -S python python-pip
 sudo pacman -S gcc make ripgrep 
 sudo pacman -S neofetch
 sudo pacman -S ranger

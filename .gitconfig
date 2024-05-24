@@ -4,6 +4,20 @@
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[core]
+	editor = nvim
 [credential]
 	useHttpPath = true
 	helper = store
+[alias]
+	a = add --all
+	ca = commit -am
+	cm = commit -m
+	###############
+	d = diff
+	###############
+	pl = pull
+	ps = push
+	###############
+	cl = clone
+	cld = clone --depth 1

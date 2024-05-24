@@ -2,7 +2,7 @@ echo "Installing programs"
 sudo apt install tmux
 sudo apt install python
 sudo apt install gcc make ripgrep cmake
-sudo apt install python3-venv 
+sudo apt install python3-venv python3-pip python3
 sudo apt install neofetch ranger
 sudo apt install build-essential 
 sudo apt install libpthread-stubs0-dev

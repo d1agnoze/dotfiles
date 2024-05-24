@@ -34,3 +34,6 @@ alias c='clear'
 if [[ $(grep -i Microsoft /proc/version) ]]; then
   alias wex='explorer.exe .'
 fi
+
+#lazygit
+alias lg='lazygit'

@@ -6,7 +6,7 @@ select opt in yes no; do
       echo "Getting Neovim...."
       curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
       chmod a+x nvim.appimage
-      sudo mv neovim.appimage /usr/local/bin/nvim
+      sudo mv nvim.appimage /usr/local/bin/nvim
       break
       ;;
     no)

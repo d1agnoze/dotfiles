@@ -24,3 +24,6 @@ rm /tmp/${LATEST_VERSION}.linux-amd64.tar.gz
 echo "Go installation complete. Go version:"
 go version
 
+echo "Installing go debugger:"
+go install github.com/go-delve/delve/cmd/dlv@latest
+

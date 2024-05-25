@@ -1,6 +1,5 @@
 local M = {}
 -- INFO: LSP, LINTER, FORMATTER
--- INFO: DAP is installed via mason-nvim-dap, checkout vdac/mason-dap
 M.ensure_installed = {
   --LSP
   "bash-language-server",
@@ -15,6 +14,10 @@ M.ensure_installed = {
   "svelte-language-server",
   "tailwindcss-language-server",
   "typescript-language-server",
+
+  --DAP
+  "cpptools",
+  "go-debug-adapter",
 
   -- LINTER
   "buf",

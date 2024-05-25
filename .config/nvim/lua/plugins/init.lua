@@ -118,9 +118,9 @@ return {
     config = function()
       require("nvim-dap-virtual-text").setup()
       require("dap.ext.vscode").load_launchjs(nil, {})
+      require("dap-go").setup()
       require "vdac.dap_ui"
       require "vdac.dap_keymap"
-      require("dap-go").setup()
     end,
   },
   {

@@ -35,7 +35,13 @@ return {
       require "vdac.snip"
     end,
   },
-
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function()
+      local M = require "nvchad.configs.cmp"
+      table.insert(M.sources, { name = "codeium" })
+    end,
+  },
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -53,6 +59,12 @@ return {
   },
   { "tpope/vim-dispatch", lazy = false },
   { "nvim-lua/plenary.nvim", lazy = false },
+  {
+    "folke/ts-comments.nvim",
+    opts = {},
+    event = "VeryLazy",
+    enabled = vim.fn.has "nvim-0.10.0" == 1,
+  },
   -----------------------------------------------------
   -- TOOLS
   {
@@ -65,11 +77,44 @@ return {
     keys = require("vdac.harpoon").keys,
   },
   {
-    "Exafunction/codeium.vim",
-    event = "BufEnter",
+    "Exafunction/codeium.nvim",
+    event = "InsertEnter",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
     config = function()
-      require "vdac.codepium"
+      require("codeium").setup {
+        enable_chat = true,
+      }
     end,
+  },
+  {
+    "folke/trouble.nvim",
+    opts={},
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>lid",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>lis",
+        "<cmd>Trouble symbols toggle<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>lit",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>liq",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
   },
   -----------------------------------------------
   --- BETTER EXPERIENCE
@@ -100,6 +145,11 @@ return {
         css = true, -- Disable CSS color notation support
       },
     },
+  },
+  {
+    "zeioth/garbage-day.nvim",
+    dependencies = "neovim/nvim-lspconfig",
+    event = "VeryLazy",
   },
   -------------------------------
   -- DAP/DEBUG SECTION

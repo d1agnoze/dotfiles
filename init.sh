@@ -9,7 +9,7 @@ orginal_PS3="$PS3"
 
 echo -e "\e[0;34mInstall options:\e[0m"
 PS3=$'\e[0;33mPlease select one of the options: \e[0m'
-select choice in "Neovim and symlink only" "Full system install" "Update Neovim" "Exit the script"; do
+select choice in "Neovim and symlink only" "Full system install" "Update Neovim" "Install Extras" "Exit the script"; do
     case $choice in
         "Neovim and symlink only")
             source ~/dotfiles/install_scripts/neovim.sh
@@ -25,6 +25,10 @@ select choice in "Neovim and symlink only" "Full system install" "Update Neovim"
             ;;
         "Update Neovim")
             source ~/dotfiles/install_scripts/update_neovim.sh
+            break
+            ;;
+        "Install Extras")
+            source ~/dotfiles/install_scripts/extras.sh
             break
             ;;
         "Exit the script")

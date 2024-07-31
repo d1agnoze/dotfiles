@@ -14,7 +14,7 @@ nvm install --lts
 echo "NOTE: you already have all the dependencies? run neovim.sh and symlink.sh to begin linking"
 
 echo "Select your linux distro:"
-select choice in "Arch" "Ubuntu"; do
+select choice in "Arch" "Ubuntu" "Fedora"; do
   echo "Selected distrobution: $choice"
     case $choice in
         Arch)
@@ -25,10 +25,14 @@ select choice in "Arch" "Ubuntu"; do
             source ~/dotfiles/install_scripts/ubuntu.sh
             break
             ;;
+        Fedora)
+            source ~/dotfiles/install_scripts/fedora.sh
+            break
+            ;;
         *)
             echo "Invalid option. Please try again."
             ;;
     esac
 done
 
-exit 0
+source ~/dotfiles/install_scripts/go_install.sh

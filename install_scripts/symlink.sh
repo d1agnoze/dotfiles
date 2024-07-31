@@ -17,9 +17,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo -e "type this in terminal if tmux is already running "
 echo -e "\e[1;92mtmux source ~/.tmux.conf \e[0m"
 
-echo -e "\e[1;94mRemoving previous neovim\e[0m"
+echo -e "\e[1;94mRemoving existing neovim config\e[0m"
 rm -rf ~/.config/nvim
-echo -e "\e[1;94mDo you wish to previous neovim plugins?\e[0m"
+echo -e "\e[1;94mDo you wish to delete existing neovim plugins?\e[0m"
 select yn in "Yes" "No"; do
     case $yn in
       Yes ) rm -rf ~/.local/share/nvim; break;;

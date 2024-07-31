@@ -19,20 +19,15 @@ select choice in "Arch" "Ubuntu" "Fedora"; do
     case $choice in
         Arch)
             source ~/dotfiles/install_scripts/arch.sh
-            break
             ;;
         Ubuntu)
             source ~/dotfiles/install_scripts/ubuntu.sh
-            break
             ;;
         Fedora)
             source ~/dotfiles/install_scripts/fedora.sh
-            break
             ;;
         *)
             echo "Invalid option. Please try again."
             ;;
     esac
 done
-
-source ~/dotfiles/install_scripts/go_install.sh

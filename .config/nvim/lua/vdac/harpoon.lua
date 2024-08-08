@@ -39,12 +39,5 @@ M.keys = {
     end,
     desc = "harpoon menu",
   },
-  {
-    "<C-h>",
-    function()
-      require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
-    end,
-    desc = "harpoon menu",
-  },
 }
 return M

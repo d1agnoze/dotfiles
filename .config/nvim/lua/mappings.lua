@@ -50,9 +50,9 @@ map(
   ":lua  require 'harpoon'.ui:toggle_quick_menu(require 'harpoon':list())<CR>",
   { desc = "harpoon quick menu", silent = true }
 )
-map("n", "<C-j>", ":lua  require 'harpoon':list():select(1)<CR>", { desc = "harpoon to file 1", silent = true })
-map("n", "<C-k>", ":lua  require 'harpoon':list():select(2)<CR>", { desc = "harpoon to file 2", silent = true })
-map("n", "<C-l>", ":lua  require 'harpoon':list():select(3)<CR>", { desc = "harpoon to file 3", silent = true })
+map("n", "<S-w>", ":lua  require 'harpoon':list():select(1)<CR>", { desc = "harpoon to file 1", silent = true })
+map("n", "<S-e>", ":lua  require 'harpoon':list():select(2)<CR>", { desc = "harpoon to file 2", silent = true })
+map("n", "<S-r>", ":lua  require 'harpoon':list():select(3)<CR>", { desc = "harpoon to file 3", silent = true })
 
 --Command to open Mason, Lsp, Conform, Lazy
 map("n", "<leader>sm", ":Mason<CR>", { desc = "Open Mason", silent = true })

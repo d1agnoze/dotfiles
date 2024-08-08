@@ -1,0 +1,29 @@
+#!/bin/bash
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+# add go path
+PATH="$PATH:/usr/local/go/bin"
+# add this after install protoc
+PATH="$PATH:$(go env GOPATH)/bin"
+
+PATH="$PATH:$HOME/.cargo/env"
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export VISUAL=nvim;
+export EDITOR=nvim;
+
+# Set up fzf key bindings and fuzzy bash_completion
+# fzf version 0.48+ is required
+# eval "$(fzf --bash)"
+. "$HOME/.cargo/env"

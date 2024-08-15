@@ -91,7 +91,7 @@ return {
   },
   {
     "folke/trouble.nvim",
-    opts={},
+    opts = {},
     cmd = "Trouble",
     keys = {
       {
@@ -150,6 +150,29 @@ return {
     "zeioth/garbage-day.nvim",
     dependencies = "neovim/nvim-lspconfig",
     event = "VeryLazy",
+  },
+  {
+    "nat-418/boole.nvim",
+    event = "BufRead",
+    config = function()
+      require("boole").setup {
+        mappings = {
+          increment = "<C-a>",
+          decrement = "<C-x>",
+        },
+        -- User defined loops
+        additions = {
+          { "Foo", "Bar" },
+          { "tic", "tac", "toe" },
+        },
+        allow_caps_additions = {
+          { "enable", "disable" },
+          -- enable → disable
+          -- Enable → Disable
+          -- ENABLE → DISABLE
+        },
+      }
+    end,
   },
   -------------------------------
   -- DAP/DEBUG SECTION

@@ -63,3 +63,7 @@ map("n", "<leader>sl", ":Lazy<CR>", { desc = "Open Lazy", silent = true })
 map("n", "<leader>ih", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "toggle inlay hint" })
+
+-- command mode
+vim.api.nvim_set_keymap("c", "<C-k>", "\\(\\)<Left><Left>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("c", "<C-l>", "\\w*", { noremap = true, silent = true })

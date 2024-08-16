@@ -65,5 +65,24 @@ map("n", "<leader>ih", function()
 end, { desc = "toggle inlay hint" })
 
 -- command mode
-vim.api.nvim_set_keymap("c", "<C-k>", "\\(\\)<Left><Left>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("c", "<C-l>", "\\w*", { noremap = true, silent = true })
+map("c", "<C-k>", "\\(\\)<Left><Left>", { noremap = true, silent = true })
+map("c", "<C-l>", "\\w*", { noremap = true, silent = true })
+
+---extra telescope mappings
+local builtin = require "telescope.builtin"
+map("n", "<leader>fS", builtin.lsp_dynamic_workspace_symbols, { desc = "lsp dynamic workspace symbols", silent = true })
+local function symbol_search()
+  vim.ui.input({ prompt = "Symbol Query: (leave empty for word under cursor)" }, function(query)
+    if query then
+      -- word under cursor if given query is empty
+      if query == "" then
+        query = vim.fn.expand "<cword>"
+      end
+      builtin.lsp_workspace_symbols { query = query, prompt_title = ("Find word (%s)"):format(query) }
+    end
+  end)
+end
+
+map("n", "<leader>fs", symbol_search, { desc = "lsp workspace symbols", silent = true })
+map("n", "<leader>fd", "<CMD>:Lspsaga finder<CR>", { desc = "lspsaga symbols finder", silent = true })
+map("n", "<leader>cs", "<CMD>:Lspsaga code_action<CR>", { desc = "lspsaga code_action", silent = true, noremap = true })

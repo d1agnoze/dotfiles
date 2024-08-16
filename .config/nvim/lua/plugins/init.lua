@@ -116,9 +116,31 @@ return {
       },
     },
   },
+  {
+    "nvimdev/lspsaga.nvim",
+    event = "BufRead",
+    config = function()
+      require("lspsaga").setup {
+        lightbulb = {
+          virtual_text = false,
+        },
+      }
+    end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter", -- optional
+      "nvim-tree/nvim-web-devicons", -- optional
+    },
+  },
   -----------------------------------------------
   --- BETTER EXPERIENCE
   { "tpope/vim-surround", lazy = false },
+  {
+    "petertriho/nvim-scrollbar",
+    event = "BufRead",
+    config = function()
+      require("scrollbar").setup()
+    end,
+  },
   {
     "windwp/nvim-ts-autotag",
     event = "BufRead",

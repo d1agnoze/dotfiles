@@ -106,3 +106,4 @@ if ! shopt -oq posix; then
 fi
 
 neofetch
+. "$HOME/.cargo/env"

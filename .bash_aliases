@@ -27,7 +27,7 @@ alias l='ls -CF'
 #tmux
 alias ta='tmux attach'
 alias tks='tmux kill-session'
-alias c='clear'
+alias c='clear && neofetch'
 
 
 #WSL shortcuts

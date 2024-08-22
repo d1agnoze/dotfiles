@@ -5,7 +5,8 @@
 local M = {}
 
 M.ui = {
-  theme = "everforest",
+  theme = "vscode_dark",
+  -- transparency = true,
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },

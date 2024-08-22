@@ -86,3 +86,36 @@ end
 map("n", "<leader>fs", symbol_search, { desc = "lsp workspace symbols", silent = true })
 map("n", "<leader>fl", "<CMD>:Lspsaga finder<CR>", { desc = "lspsaga symbols finder", silent = true })
 -- map("n", "<leader>cs", "<CMD>:Lspsaga code_action<CR>", { desc = "lspsaga code_action", silent = true, noremap = true })
+--
+-- TOGGLE TRANSPARENCY
+map("n", "<leader>tR", function()
+  require("base46").toggle_transparency()
+end, { desc = "toggle transparency" })
+
+map("n", "<leader>dc", function()
+  require("dap").continue()
+end)
+
+map("n", "<F5>", function()
+  require("dap").restart()
+end, { desc = "DAP restart" })
+
+map("n", "<F9>", function()
+  require("dap").step_over()
+end, { desc = "DAP step over" })
+
+map("n", "<F10>", function()
+  require("dap").step_into()
+end, { desc = "DAP step into" })
+
+map("n", "<F11>", function()
+  require("dap").step_out()
+end, { desc = "DAP step out" })
+
+map("n", "<F12>", function()
+  require("dap").step_back()
+end, { desc = "DAP step back" })
+
+map("n", "<F2>", function()
+  require("dap").toggle_breakpoint()
+end, { desc = "DAP toggle breakpoint", noremap = true, silent = true })

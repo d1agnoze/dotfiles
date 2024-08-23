@@ -1,5 +1,5 @@
 return {
-  ---ESSENTIALS
+  ---INFO: ESSENTIALS
   {
     "stevearc/conform.nvim",
     config = function()
@@ -66,7 +66,7 @@ return {
     enabled = vim.fn.has "nvim-0.10.0" == 1,
   },
   -----------------------------------------------------
-  -- TOOLS
+  --INFO: TOOLS
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -132,15 +132,8 @@ return {
     },
   },
   -----------------------------------------------
-  --- BETTER EXPERIENCE
+  ---INFO: BETTER EXPERIENCE
   { "tpope/vim-surround", lazy = false },
-  {
-    "petertriho/nvim-scrollbar",
-    event = "BufRead",
-    config = function()
-      require("scrollbar").setup()
-    end,
-  },
   {
     "windwp/nvim-ts-autotag",
     event = "BufRead",
@@ -196,8 +189,25 @@ return {
       }
     end,
   },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown" },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+    config = function()
+      require("render-markdown").setup {
+        overrides = {
+          buftype = {
+            nofile = {
+              code = { left_pad = 0, right_pad = 0, style = "language" },
+              sign = { enabled = false },
+            },
+          },
+        },
+      }
+    end,
+  },
   -------------------------------
-  -- DAP/DEBUG SECTION
+  --INFO: DAP/DEBUG SECTION
   {
     "mfussenegger/nvim-dap",
     dependencies = {

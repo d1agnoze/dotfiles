@@ -119,3 +119,18 @@ end, { desc = "DAP step back" })
 map("n", "<F2>", function()
   require("dap").toggle_breakpoint()
 end, { desc = "DAP toggle breakpoint", noremap = true, silent = true })
+
+if vim.loop.os_uname().sysname == "Linux" or vim.loop.os_uname().sysname == "Unix" then
+  map("i", "<C-f>", function()
+    require("vdac.fcitx").toggleImname()
+  end, { noremap = true, desc = "toggle fcitx" })
+  vim.api.nvim_create_autocmd("InsertLeavePre", {
+    pattern = "*",
+    callback = function()
+      local s = require "vdac.fcitx"
+      if s.getFcitx() ~= "" then
+        vim.fn.system(s.getFcitx() .. " -s " .. s.imname_us)
+      end
+    end,
+  })
+end

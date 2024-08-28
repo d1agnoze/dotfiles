@@ -84,17 +84,24 @@ local function symbol_search()
 end
 
 map("n", "<leader>fs", symbol_search, { desc = "lsp workspace symbols", silent = true })
+map("n", "<leader>fk", "<CMD>:Telescope keymaps<CR>", { desc = "Telescope keymaps", silent = true })
 map("n", "<leader>fl", "<CMD>:Lspsaga finder<CR>", { desc = "lspsaga symbols finder", silent = true })
--- map("n", "<leader>cs", "<CMD>:Lspsaga code_action<CR>", { desc = "lspsaga code_action", silent = true, noremap = true })
+map("n", "<leader>dl", function()
+  require("telescope").extensions.dap.commands {}
+end, { desc = "lspsaga code_action", silent = true, noremap = true })
 --
 -- TOGGLE TRANSPARENCY
+map("n", "<leader>de", function()
+  require("dapui").eval(nil, { enter = true })
+end, { desc = "DAP evaluate", noremap = true, silent = true })
+
 map("n", "<leader>tR", function()
   require("base46").toggle_transparency()
 end, { desc = "toggle transparency" })
 
 map("n", "<leader>dc", function()
   require("dap").continue()
-end)
+end, { desc = "DAP continue", noremap = true, silent = true })
 
 map("n", "<F5>", function()
   require("dap").restart()
@@ -108,6 +115,10 @@ map("n", "<F10>", function()
   require("dap").step_into()
 end, { desc = "DAP step into" })
 
+map("n", "<leader>dd", function()
+  require("dap").terminate()
+end, { desc = "DAP stop" })
+
 map("n", "<F11>", function()
   require("dap").step_out()
 end, { desc = "DAP step out" })
@@ -120,6 +131,7 @@ map("n", "<F2>", function()
   require("dap").toggle_breakpoint()
 end, { desc = "DAP toggle breakpoint", noremap = true, silent = true })
 
+--- FCITX
 if vim.loop.os_uname().sysname == "Linux" or vim.loop.os_uname().sysname == "Unix" then
   map("i", "<C-f>", function()
     require("vdac.fcitx").toggleImname()

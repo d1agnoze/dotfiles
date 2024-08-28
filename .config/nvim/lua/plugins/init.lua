@@ -8,7 +8,10 @@ return {
   },
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope-dap.nvim",
+    },
     cmd = "Telescope",
     opts = function()
       return require "nvchad.configs.telescope"
@@ -19,6 +22,8 @@ return {
       telescope.setup(opts)
 
       -- load extensions
+      table.insert(opts.extensions_list, "dap")
+
       for _, ext in ipairs(opts.extensions_list) do
         telescope.load_extension(ext)
       end
@@ -219,7 +224,6 @@ return {
       "theHamsta/nvim-dap-virtual-text",
       "williamboman/mason.nvim",
     },
-    keys = { "<C-b>" },
     config = function()
       require("nvim-dap-virtual-text").setup()
       require("dap.ext.vscode").load_launchjs(nil, {})

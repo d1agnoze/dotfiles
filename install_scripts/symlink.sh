@@ -10,12 +10,16 @@ echo -e "\e[1;94mRemoving previous rcs\e[0m"
 sudo rm -f ~/.bashrc
 sudo rm -f ~/.profile
 sudo rm -f ~/.bash_aliases
+sudo rm -f ~/.bash_profile
 
-echo -e "\e[1;93mDowloading tmux plugins manager\e[0m"
-sudo rm -f ~/.tmux/plugins/tpm
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-echo -e "type this in terminal if tmux is already running "
-echo -e "\e[1;92mtmux source ~/.tmux.conf \e[0m"
+echo -e "\e[1;94mDownload tmux plugins?\e[0m"
+select yn in "Yes" "No"; do
+  case $yn in
+    Yes) echo -e "\e[1;93mDowloading tmux plugins manager\e[0m"; sudo rm -f ~/.tmux/plugins/tpm; git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; echo -e "type this in terminal if tmux is already running "; echo -e "\e[1;92mtmux source ~/.tmux.conf \e[0m";;
+    No ) break ;;
+      *) echo "Invalid option";;
+    esac
+done
 
 echo -e "\e[1;94mRemoving existing neovim config\e[0m"
 rm -rf ~/.config/nvim

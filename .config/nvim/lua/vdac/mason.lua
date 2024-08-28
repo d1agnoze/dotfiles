@@ -14,10 +14,12 @@ M.ensure_installed = {
   "svelte-language-server",
   "tailwindcss-language-server",
   "typescript-language-server",
+  "rust-analyzer",
 
   --DAP
   "cpptools",
   "go-debug-adapter",
+  "codelldb",
 
   -- LINTER
   "buf",
@@ -31,5 +33,6 @@ M.ensure_installed = {
   "prettier",
   "prettierd",
   "beautysh",
+  "ast-grep",
 }
 return M

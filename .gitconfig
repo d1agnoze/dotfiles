@@ -21,3 +21,28 @@
 	###############
 	cl = clone
 	cld = clone --depth 1
+
+[difftool]
+    prompt = true
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+# default nvimdiff
+[merge]
+  tool = nvimdiff
+[mergetool]
+  prompt = false
+  keepBackup = false
+[mergetool "nvimdiff"]
+  layout = "LOCAL,BASE,REMOTE / MERGED"
+
+; Using diffview.nvim
+; [merge]
+;   tool = diffview
+; [mergetool]
+;   prompt = false
+;   keepBackup = false
+; [mergetool "diffview"]
+;   cmd = nvim -n -c "DiffviewOpen" "$MERGE"

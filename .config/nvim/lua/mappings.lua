@@ -70,19 +70,79 @@ map("c", "<C-l>", "\\w*", { noremap = true, silent = true })
 
 ---extra telescope mappings
 local builtin = require "telescope.builtin"
-map("n", "<leader>fS", builtin.lsp_dynamic_workspace_symbols, { desc = "lsp dynamic workspace symbols", silent = true })
+map("n", "<leader>fd", builtin.lsp_dynamic_workspace_symbols, { desc = "lsp dynamic workspace symbols", silent = true })
 local function symbol_search()
   vim.ui.input({ prompt = "Symbol Query: (leave empty for word under cursor)" }, function(query)
-    if query then
-      -- word under cursor if given query is empty
-      if query == "" then
-        query = vim.fn.expand "<cword>"
-      end
-      builtin.lsp_workspace_symbols { query = query, prompt_title = ("Find word (%s)"):format(query) }
+    if not query then
+      return
     end
+    if query == "" then
+      query = vim.fn.expand "<cword>"
+    end
+    builtin.lsp_workspace_symbols { query = query, prompt_title = ("Find word (%s)"):format(query) }
   end)
 end
 
 map("n", "<leader>fs", symbol_search, { desc = "lsp workspace symbols", silent = true })
-map("n", "<leader>fd", "<CMD>:Lspsaga finder<CR>", { desc = "lspsaga symbols finder", silent = true })
-map("n", "<leader>cs", "<CMD>:Lspsaga code_action<CR>", { desc = "lspsaga code_action", silent = true, noremap = true })
+map("n", "<leader>fk", "<CMD>:Telescope keymaps<CR>", { desc = "Telescope keymaps", silent = true })
+map("n", "<leader>fl", "<CMD>:Lspsaga finder<CR>", { desc = "lspsaga symbols finder", silent = true })
+map("n", "<leader>dl", function()
+  require("telescope").extensions.dap.commands {}
+end, { desc = "lspsaga code_action", silent = true, noremap = true })
+--
+-- TOGGLE TRANSPARENCY
+map("n", "<leader>de", function()
+  require("dapui").eval(nil, { enter = true })
+end, { desc = "DAP evaluate", noremap = true, silent = true })
+
+map("n", "<leader>tR", function()
+  require("base46").toggle_transparency()
+end, { desc = "toggle transparency" })
+
+map("n", "<leader>dc", function()
+  require("dap").continue()
+end, { desc = "DAP continue", noremap = true, silent = true })
+
+map("n", "<F5>", function()
+  require("dap").restart()
+end, { desc = "DAP restart" })
+
+map("n", "<F9>", function()
+  require("dap").step_over()
+end, { desc = "DAP step over" })
+
+map("n", "<F10>", function()
+  require("dap").step_into()
+end, { desc = "DAP step into" })
+
+map("n", "<leader>dd", function()
+  require("dap").terminate()
+end, { desc = "DAP stop" })
+
+map("n", "<F11>", function()
+  require("dap").step_out()
+end, { desc = "DAP step out" })
+
+map("n", "<F12>", function()
+  require("dap").step_back()
+end, { desc = "DAP step back" })
+
+map("n", "<F2>", function()
+  require("dap").toggle_breakpoint()
+end, { desc = "DAP toggle breakpoint", noremap = true, silent = true })
+
+--- FCITX
+if vim.loop.os_uname().sysname == "Linux" or vim.loop.os_uname().sysname == "Unix" then
+  map("i", "<C-f>", function()
+    require("vdac.fcitx").toggleImname()
+  end, { noremap = true, desc = "toggle fcitx" })
+  vim.api.nvim_create_autocmd("InsertLeavePre", {
+    pattern = "*",
+    callback = function()
+      local s = require "vdac.fcitx"
+      if s.getFcitx() ~= "" then
+        vim.fn.system(s.getFcitx() .. " -s " .. s.imname_us)
+      end
+    end,
+  })
+end

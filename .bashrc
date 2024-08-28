@@ -105,5 +105,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
+eval "$(oh-my-posh init bash --config ~/dotfiles/.config/oh-my-posh/theme.omp.json)"
 neofetch
 . "$HOME/.cargo/env"

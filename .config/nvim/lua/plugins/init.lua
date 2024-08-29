@@ -10,7 +10,7 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "nvim-telescope/telescope-dap.nvim",
+      -- "nvim-telescope/telescope-dap.nvim",
     },
     cmd = "Telescope",
     opts = function()
@@ -21,8 +21,8 @@ return {
       local telescope = require "telescope"
       telescope.setup(opts)
 
-      -- load extensions
-      table.insert(opts.extensions_list, "dap")
+      -- -- load extensions
+      -- table.insert(opts.extensions_list, "dap")
 
       for _, ext in ipairs(opts.extensions_list) do
         telescope.load_extension(ext)
@@ -72,6 +72,10 @@ return {
   },
   -----------------------------------------------------
   --INFO: TOOLS
+  {
+    "sindrets/diffview.nvim",
+    cmd = { "DiffViewOpen" },
+  },
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",

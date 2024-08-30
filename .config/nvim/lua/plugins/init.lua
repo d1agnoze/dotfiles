@@ -74,7 +74,10 @@ return {
   --INFO: TOOLS
   {
     "sindrets/diffview.nvim",
-    cmd = { "DiffViewOpen" },
+    cmd={"DiffviewOpen"},
+    config = function ()
+      require('diffview').setup()
+    end
   },
   {
     "ThePrimeagen/harpoon",

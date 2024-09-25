@@ -2,8 +2,21 @@
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
-
 local lspconfig = require "lspconfig"
+local border = {
+  { "🭽", "FloatBorder" },
+  { "▔", "FloatBorder" },
+  { "🭾", "FloatBorder" },
+  { "▕", "FloatBorder" },
+  { "🭿", "FloatBorder" },
+  { "▁", "FloatBorder" },
+  { "🭼", "FloatBorder" },
+  { "▏", "FloatBorder" },
+}
+local handlers = {
+  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+}
 local servers = {
   "tsserver",
   "html",
@@ -17,6 +30,7 @@ local servers = {
   "svelte",
   "vuels",
   "marksman",
+  "gopls",
 }
 
 -- lsps with default config
@@ -25,10 +39,12 @@ for _, lsp in ipairs(servers) do
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
+    handlers = handlers,
   }
 end
 
 lspconfig.lua_ls.setup {
+  handlers = handlers,
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
@@ -48,21 +64,6 @@ lspconfig.lua_ls.setup {
         },
         maxPreload = 100000,
         preloadFileSize = 10000,
-      },
-    },
-  },
-}
-
-lspconfig.gopls.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-  settings = {
-    gopls = {
-      ["ui.inlayhint.hints"] = {
-        compositeLiteralFields = true,
-        constantValues = true,
-        parameterNames = true,
       },
     },
   },

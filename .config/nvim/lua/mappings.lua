@@ -115,9 +115,14 @@ map("n", "<F10>", function()
   require("dap").step_into()
 end, { desc = "DAP step into" })
 
-map("n", "<leader>dd", function()
+map("n", "<leader>dD", function()
   require("dap").terminate()
-end, { desc = "DAP stop" })
+end, { desc = "DAP stop (terminate)" })
+
+map("n", "<leader>dd", function()
+  require("dap").disconnect()
+end, { desc = "DAP stop (disconnect)" })
+
 
 map("n", "<F11>", function()
   require("dap").step_out()

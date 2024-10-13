@@ -7,6 +7,7 @@
 --]]
 
 -- Set <space> as the leader key
+vim.g.have_nerd_font = false
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -41,8 +42,8 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 vim.opt.incsearch = true
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldenable = false
 -- [[ Basic Keymaps ]]
 local map = vim.keymap.set
@@ -56,35 +57,35 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move focus to the right window'
 vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move focus to the upper window' })
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
-map("v", "J", ":m '>+1<CR>gv=gv", { desc = "move selected line down" })
-map("v", "K", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
-map("n", "Y", "yg$", { desc = "yank to $reg" })
-map("n", "J", "mzJ`z", { desc = "wrap below line" })
-map("n", "<C-d>", "<C-d>zz", { desc = "scroll down" })
-map("n", "<C-u>", "<C-u>zz", { desc = "scroll up" })
-map("n", "N", "Nzzzv", { desc = "Prev find" })
-map("n", "n", "nzzzv", { desc = "Next find" })
-map("x", "<leader>p", '"_dP', { desc = "" })
-map("v", "<leader>y", '"+y', { desc = "yank to clipboard" })
-map("n", "<leader>Y", '"+Y', { desc = "yank to clipboard" })
-map("i", "<C-c>", "<Esc>", { desc = "change ctrl+c to ESC" })
-map("n", "<leader>lua", ":luafile %", { desc = "run current lua file" })
-map("n", "<leader>rp", ":%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "find and replace current word" })
-map( "v", "<leader>rp", ":s/\\(\\)/\\1/g<Left><Left><Left><Left><Left><Left><Left>", { desc = "find and replace selection" })
-map("n", "<leader>ll", "zR", { noremap = true, desc = "open all folds" })
-map("n", "<leader>la", "zM", { noremap = true, desc = "close all folds" })
-map("n", "<leader>lc", "zA", { noremap = true, desc = "Toggle all folds under cursor" })
-map("n", "<leader>cl", "_vg_", { noremap = true, desc = "select line" })
+map('n', ';', ':', { desc = 'CMD enter command mode' })
+map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'move selected line down' })
+map('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'move selected line up' })
+map('n', 'Y', 'yg$', { desc = 'yank to $reg' })
+map('n', 'J', 'mzJ`z', { desc = 'wrap below line' })
+map('n', '<C-d>', '<C-d>zz', { desc = 'scroll down' })
+map('n', '<C-u>', '<C-u>zz', { desc = 'scroll up' })
+map('n', 'N', 'Nzzzv', { desc = 'Prev find' })
+map('n', 'n', 'nzzzv', { desc = 'Next find' })
+map('x', '<leader>p', '"_dP', { desc = '' })
+map('v', '<leader>y', '"+y', { desc = 'yank to clipboard' })
+map('n', '<leader>Y', '"+Y', { desc = 'yank to clipboard' })
+map('i', '<C-c>', '<Esc>', { desc = 'change ctrl+c to ESC' })
+map('n', '<leader>lua', ':luafile %', { desc = 'run current lua file' })
+map('n', '<leader>rp', ':%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>', { desc = 'find and replace current word' })
+map('v', '<leader>rp', ':s/\\(\\)/\\1/g<Left><Left><Left><Left><Left><Left><Left>', { desc = 'find and replace selection' })
+map('n', '<leader>ll', 'zR', { noremap = true, desc = 'open all folds' })
+map('n', '<leader>la', 'zM', { noremap = true, desc = 'close all folds' })
+map('n', '<leader>lc', 'zA', { noremap = true, desc = 'Toggle all folds under cursor' })
+map('n', '<leader>cl', '_vg_', { noremap = true, desc = 'select line' })
 --Command to open Mason, Lsp, Conform, Lazy
-map("n", "<leader>sm", ":Mason<CR>", { desc = "Open Mason", silent = true })
-map("n", "<leader>ss", ":LspInfo<CR>", { desc = "Open LspInfo", silent = true })
-map("n", "<leader>sl", ":Lazy<CR>", { desc = "Open Lazy", silent = true })
+map('n', '<leader>sm', ':Mason<CR>', { desc = 'Open Mason', silent = true })
+map('n', '<leader>ss', ':LspInfo<CR>', { desc = 'Open LspInfo', silent = true })
+map('n', '<leader>sl', ':Lazy<CR>', { desc = 'Open Lazy', silent = true })
 --save file
-map("n", "<C-s>", ":update", { desc = "Save file", silent = true })
+map('n', '<C-s>', ':update<CR>', { desc = 'Save file', silent = true })
 -- command mode
-map("c", "<C-k>", "\\(\\)<Left><Left>", { noremap = true, silent = true })
-map("c", "<C-l>", "\\w*", { noremap = true, silent = true })
+map('c', '<C-k>', '\\(\\)<Left><Left>', { noremap = true, silent = true })
+map('c', '<C-l>', '\\w*', { noremap = true, silent = true })
 -- Remap telescope do find dotfiles
 -- [[ Basic Autocommands ]]
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -160,10 +161,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set('n', '<leader>ff', function ()
-        builtin.find_files { find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}
-        end,
-        { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>ff', function()
+        builtin.find_files { find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } }
+      end, { desc = '[S]earch [F]iles' })
       -- Shortcut for searching your Neovim configuration files
       vim.keymap.set('n', '<leader>fn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
@@ -246,20 +246,7 @@ require('lazy').setup({
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
       local servers = {
-        -- clangd = {},
-        gopls = {},
         bashls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-            },
-          },
-        },
       }
 
       require('mason').setup()
@@ -267,8 +254,8 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua',
         'gopls',
-        "bash-language-server",
-        "beautysh",
+        'bash-language-server',
+        'beautysh',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
       require('mason-lspconfig').setup {
@@ -301,8 +288,8 @@ require('lazy').setup({
       notify_on_error = false,
       formatters_by_ft = {
         lua = { 'stylua' },
-        go = { "gofmt" },
-        bash = { "beautysh" },
+        go = { 'gofmt' },
+        bash = { 'beautysh' },
       },
     },
   },
@@ -320,8 +307,7 @@ require('lazy').setup({
           end
           return 'make install_jsregexp'
         end)(),
-        dependencies = {
-        },
+        dependencies = {},
       },
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lsp',
@@ -367,19 +353,9 @@ require('lazy').setup({
       }
     end,
   },
-  -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
-      -- Better Around/Inside textobjects
-      -- Examples:
-      --  - va)  - [V]isually select [A]round [)]paren
-      --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-      --  - ci'  - [C]hange [I]nside [']quote
-      require('mini.ai').setup { n_lines = 500 }
-
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
@@ -389,7 +365,9 @@ require('lazy').setup({
       -- Simple and easy statusline.
       local statusline = require 'mini.statusline'
       statusline.setup { use_icons = vim.g.have_nerd_font }
-      statusline.section_location = function() return '%2l:%-2v' end
+      statusline.section_location = function()
+        return '%2l:%-2v'
+      end
     end,
   },
   { -- Highlight, edit, and navigate code
@@ -407,22 +385,10 @@ require('lazy').setup({
       indent = { enable = true },
     },
   },
+  require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.autopairs',
 }, {
   ui = {
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
+    icons = {},
   },
 })

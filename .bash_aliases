@@ -19,6 +19,11 @@ function ranger {
     command rm -f -- "$tempfile" 2>/dev/null
 }
 
+function fzfdiff {
+  preview="git diff $@ --color=always -- {-1}"
+  git diff $@ --name-only | fzf -m --ansi --preview $preview
+}
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'

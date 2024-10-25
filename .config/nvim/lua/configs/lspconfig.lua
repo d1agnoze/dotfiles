@@ -18,7 +18,7 @@ local handlers = {
   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
 }
 local servers = {
-  "tsserver",
+  "ts_ls",
   "html",
   "cssls",
   "clangd",

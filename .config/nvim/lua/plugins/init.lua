@@ -7,6 +7,14 @@ return {
     end,
   },
   {
+    "nvimtools/none-ls.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require "configs.null_ls"
+    end,
+  },
+  {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -74,10 +82,10 @@ return {
   --INFO: TOOLS
   {
     "sindrets/diffview.nvim",
-    cmd={"DiffviewOpen"},
-    config = function ()
-      require('diffview').setup()
-    end
+    cmd = { "DiffviewOpen" },
+    config = function()
+      require("diffview").setup()
+    end,
   },
   {
     "ThePrimeagen/harpoon",
@@ -103,7 +111,15 @@ return {
   },
   {
     "folke/trouble.nvim",
-    opts = {},
+    opts = {
+      modes = {
+        symbols = {
+          filter = {
+            ["not"] = { ft = "go", kind = "Field" },
+          },
+        },
+      },
+    },
     cmd = "Trouble",
     keys = {
       {
@@ -217,6 +233,20 @@ return {
         },
       }
     end,
+  },
+  {
+    "ray-x/go.nvim",
+    dependencies = { -- optional packages
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("go").setup()
+    end,
+    event = { "CmdlineEnter" },
+    ft = { "go", "gomod" },
+    build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   },
   -------------------------------
   --INFO: DAP/DEBUG SECTION

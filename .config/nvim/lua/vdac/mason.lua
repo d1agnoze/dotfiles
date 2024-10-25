@@ -22,7 +22,7 @@ M.ensure_installed = {
   -- LINTER
   "buf",
   "cmakelang",
-
+  "golangci-lint-langserver",
   -- FORMATTER
   "stylua",
   "cmakelang",

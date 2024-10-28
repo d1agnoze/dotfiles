@@ -10,6 +10,8 @@ M.base46 = {
     ["@comment"] = { italic = true },
     Visual = { bg = "green", fg = "black" },
   },
+  transparency = true,
+  theme = "material-darker",
 }
 M.nvdash = {
   load_on_startup = true,
@@ -35,8 +37,12 @@ M.nvdash = {
   -- },
 }
 M.ui = {
-  theme = "material-darker",
-  -- transparency = true,
+  telescope = { style = "bordered" },
+  cmp = {
+    icons = true,
+    lspkind_text = true,
+    style = "atom_colored",
+  },
 }
 
 return M

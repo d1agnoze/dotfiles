@@ -163,6 +163,14 @@ return {
   ---INFO: BETTER EXPERIENCE
   { "tpope/vim-surround", lazy = false },
   {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    event = { "LspAttach" },
+    config = function()
+      require("lsp_lines").setup()
+      vim.keymap.set("", "<Leader>tl", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
+    end,
+  },
+  {
     "windwp/nvim-ts-autotag",
     event = "BufRead",
     config = function()

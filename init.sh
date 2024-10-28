@@ -9,7 +9,7 @@ orginal_PS3="$PS3"
 
 echo -e "\e[0;34mInstall options:\e[0m"
 PS3=$'\e[0;33mPlease select one of the options: \e[0m'
-select choice in "Neovim and symlink only" "Full system install" "Update Neovim" "Install Extras" "Install Go" "Exit the script"; do
+select choice in "symlink only" "Full system install" "Install Extras(Fedora Only)" "Exit the script"; do
     case $choice in
         "symlink only")
             source ~/dotfiles/install_scripts/symlink.sh

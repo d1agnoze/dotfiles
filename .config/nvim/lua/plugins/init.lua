@@ -15,6 +15,16 @@ return {
     end,
   },
   {
+    "lewis6991/gitsigns.nvim",
+    event = "User FilePost",
+    opts = function()
+      return require "nvchad.configs.gitsigns"
+    end,
+    config = function ()
+      require("vdac.gitsigns")
+    end
+  },
+  {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",

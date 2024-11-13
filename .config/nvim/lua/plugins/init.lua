@@ -20,34 +20,25 @@ return {
     opts = function()
       return require "nvchad.configs.gitsigns"
     end,
-    config = function ()
-      require("vdac.gitsigns")
-    end
+    config = function()
+      require "vdac.gitsigns"
+    end,
   },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      -- "nvim-telescope/telescope-dap.nvim",
+      "nvim-telescope/telescope-dap.nvim",
     },
     cmd = "Telescope",
-    opts = function()
-      return require "nvchad.configs.telescope"
-    end,
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "telescope")
-      local telescope = require "telescope"
-      telescope.setup(opts)
-
-      -- -- load extensions
-      -- table.insert(opts.extensions_list, "dap")
-
-      for _, ext in ipairs(opts.extensions_list) do
-        telescope.load_extension(ext)
-      end
-      -- change selection color
-      vim.cmd [[highlight TelescopeSelection guifg=black guibg=#32CD32]]
-    end,
+    opts = {
+      extensions_list = { "dap" },
+      extensions = {
+        dap = {
+          prompt_title = "[ Debugger ]",
+        },
+      },
+    },
   },
   {
     "L3MON4D3/LuaSnip",
@@ -90,13 +81,6 @@ return {
   },
   -----------------------------------------------------
   --INFO: TOOLS
-  {
-    "sindrets/diffview.nvim",
-    cmd = { "DiffviewOpen" },
-    config = function()
-      require("diffview").setup()
-    end,
-  },
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -281,7 +265,7 @@ return {
     },
     config = function()
       require("nvim-dap-virtual-text").setup()
-      require("dap.ext.vscode").load_launchjs(nil, {})
+      -- require("dap.ext.vscode").load_launchjs(nil, {})
       require("dap-go").setup()
       require "vdac.dap_ui"
       require "vdac.dap_keymap"

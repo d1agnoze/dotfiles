@@ -62,7 +62,8 @@ map("n", "<leader>sl", ":Lazy<CR>", { desc = "Open Lazy", silent = true })
 --Lsp inlay hint: Neovim 0.10
 map("n", "<leader>ih", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end, { desc = "toggle inlay hint" })
+  vim.cmd "DapVirtualTextToggle"
+end, { desc = "toggle inlay hint ( and DAP virtual text)", noremap = true, silent = false })
 
 -- command mode
 map("c", "<C-k>", "\\(\\)<Left><Left>", { noremap = true, silent = true })
@@ -123,7 +124,6 @@ map("n", "<leader>dd", function()
   require("dap").disconnect()
 end, { desc = "DAP stop (disconnect)" })
 
-
 map("n", "<F11>", function()
   require("dap").step_out()
 end, { desc = "DAP step out" })
@@ -151,3 +151,8 @@ if vim.loop.os_uname().sysname == "Linux" or vim.loop.os_uname().sysname == "Uni
     end,
   })
 end
+
+map("n", "<leader>td", "<cmd>TodoTelescope<cr>", { noremap = true, silent = true })
+map("n", "<leader>fc", function()
+  require("telescope").extensions.dap.configurations {}
+end, { noremap = true, silent = true, desc = "DAP configurations" })

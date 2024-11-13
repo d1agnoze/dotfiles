@@ -26,7 +26,7 @@ local servers = {
   "tailwindcss",
   "emmet_ls",
   "bashls",
-  "bufls",
+  "buf_ls",
   "svelte",
   "vuels",
   "marksman",

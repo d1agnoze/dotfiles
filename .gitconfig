@@ -21,6 +21,8 @@
 	###############
 	cl = clone
 	cld = clone --depth 1
+  co = checkout
+  st = status
 
   
 [difftool]

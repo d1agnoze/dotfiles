@@ -19,5 +19,3 @@ o.foldenable = false
 
 local nvtree = require "nvchad.configs.nvimtree"
 nvtree.view.side = "right"
-
-vim.opt.fillchars:append { diff = "╱" }

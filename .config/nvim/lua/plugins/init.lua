@@ -79,6 +79,33 @@ return {
     event = "VeryLazy",
     enabled = vim.fn.has "nvim-0.10.0" == 1,
   },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+    opts = {
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+          },
+        },
+      },
+    },
+  },
+  {
+    "stevearc/dressing.nvim",
+    lazy = false,
+    opts = {
+      select = {
+        telescope = {
+          initial_mode = "normal",
+        },
+      },
+    },
+  },
   -----------------------------------------------------
   --INFO: TOOLS
   {
@@ -250,8 +277,6 @@ return {
     ft = { "go", "gomod" },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   },
-  -------------------------------
-  --INFO: DAP/DEBUG SECTION
   {
     "mfussenegger/nvim-dap",
     dependencies = {
@@ -280,5 +305,4 @@ return {
       require("mason-nvim-dap").setup(opt)
     end,
   },
-  ------------------------------
 }

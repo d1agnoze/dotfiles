@@ -29,13 +29,6 @@ M.nvdash = {
     "        ⠀⠀⠀⢸⣇⠀⠀⠀⣿⡇⣿⡄⠀⢀⣿⠇⠀        ",
     "        ⠀⠀⠀⠘⣿⣤⣤⣴⡿⠃⠙⠛⠛⠛⠋⠀⠀        ",
   },
-  -- buttons = {
-  --   { "  Find File", "Spc f f", "Telescope find_files" },
-  --   { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
-  --   { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
-  --   { "  Themes", "Spc t h", "Telescope themes" },
-  --   { "  Mappings", "Spc c h", "NvCheatsheet" },
-  -- },
 }
 M.ui = {
   telescope = { style = "bordered" },
@@ -43,6 +36,14 @@ M.ui = {
     icons = true,
     lspkind_text = true,
     style = "atom_colored",
+  },
+}
+M.term = {
+  float = {
+    row = 0.25,
+    col = 0.15,
+    width = 0.7,
+    height = 0.6,
   },
 }
 

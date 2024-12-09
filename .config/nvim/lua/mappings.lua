@@ -156,3 +156,5 @@ map("n", "<leader>td", "<cmd>TodoTelescope<cr>", { noremap = true, silent = true
 map("n", "<leader>fc", function()
   require("telescope").extensions.dap.configurations {}
 end, { noremap = true, silent = true, desc = "DAP configurations" })
+
+map("v", "<leader>rs", ":vimgrep // %<Left><Left><Left>", { desc = "find in selection" })

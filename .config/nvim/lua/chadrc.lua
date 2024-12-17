@@ -10,6 +10,7 @@ M.base46 = {
     ["@comment"] = { italic = true },
     Visual = { bg = "green", fg = "black" },
     TelescopeSelection = { bg = "#32CD32", fg = "black" },
+    MiniMapNormal = { bg = "NONE" },
   },
   transparency = true,
   theme = "material-darker",

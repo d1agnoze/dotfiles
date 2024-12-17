@@ -14,6 +14,8 @@ M.ensure_installed = {
   "svelte-language-server",
   "tailwindcss-language-server",
   "typescript-language-server",
+  "docker-compose-language-service",
+  "dockerfile-language-server",
 
   --DAP
   "cpptools",

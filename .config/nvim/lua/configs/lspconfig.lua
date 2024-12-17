@@ -31,6 +31,8 @@ local servers = {
   "vuels",
   "marksman",
   "gopls",
+  "docker_compose_language_service",
+  "dockerls",
 }
 
 -- lsps with default config

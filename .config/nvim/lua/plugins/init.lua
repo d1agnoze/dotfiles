@@ -124,56 +124,19 @@ return {
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",
     },
-    config = function()
-      require("codeium").setup {
-        enable_chat = true,
-      }
-    end,
+    opts = {},
   },
   {
     "folke/trouble.nvim",
-    opts = {
-      modes = {
-        symbols = {
-          filter = {
-            ["not"] = { ft = "go", kind = "Field" },
-          },
-        },
-      },
-    },
-    cmd = "Trouble",
-    keys = {
-      {
-        "<leader>lid",
-        "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
-      },
-      {
-        "<leader>lis",
-        "<cmd>Trouble symbols toggle<cr>",
-        desc = "Symbols (Trouble)",
-      },
-      {
-        "<leader>lit",
-        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-        desc = "LSP Definitions / references / ... (Trouble)",
-      },
-      {
-        "<leader>liq",
-        "<cmd>Trouble qflist toggle<cr>",
-        desc = "Quickfix List (Trouble)",
-      },
-    },
+    opts = require("vdac.trouble").opts,
+    cmd = require("vdac.trouble").cmd,
+    keys = require("vdac.trouble").keys,
   },
   {
     "nvimdev/lspsaga.nvim",
     event = "BufRead",
     config = function()
-      require("lspsaga").setup {
-        lightbulb = {
-          virtual_text = false,
-        },
-      }
+      require("lspsaga").setup { lightbulb = { virtual_text = false } }
     end,
     dependencies = {
       "nvim-treesitter/nvim-treesitter", -- optional
@@ -304,5 +267,33 @@ return {
       local opt = require "vdac.mason-dap"
       require("mason-nvim-dap").setup(opt)
     end,
+  },
+  {
+    "echasnovski/mini.map",
+    version = false,
+    event = { "LspAttach" },
+    keys = require("vdac.minimap").keys,
+    config = require("vdac.minimap").config,
+  },
+  {
+    "smjonas/inc-rename.nvim",
+    event = { "LspAttach" },
+    keys = {
+      {
+        "<leader>rn",
+        function()
+          return ":IncRename " .. vim.fn.expand "<cword>"
+        end,
+        "n",
+        expr = true,
+        remap = true,
+        desc = "lsp rename",
+        silent = true,
+      },
+    },
+    dependencies = { "stevearc/dressing.nvim" },
+    opts = {
+      input_buffer_type = "dressing",
+    },
   },
 }

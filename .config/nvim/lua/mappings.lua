@@ -173,3 +173,5 @@ map("n", "<leader>ts", function()
     print "Tabstop set to 8"
   end
 end, { desc = "Toggle tabstop between 8 and 2" })
+
+map("n", "*", "<cmd>keepjumps normal! mi*`i<CR>zz", { noremap = true, silent = true, desc="highlight current word" })

@@ -26,6 +26,7 @@ M.lsp = {
   { name = "typescript-language-server", cmd = "ts_ls" },
   { name = "docker-compose-language-service", cmd = "docker_compose_language_service" },
   { name = "dockerfile-language-server", cmd = "dockerls" },
+  { name = "yaml-language-server", cmd = "yamlls" },
 }
 
 M.daps = {

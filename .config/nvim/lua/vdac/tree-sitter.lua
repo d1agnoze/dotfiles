@@ -1,30 +1,4 @@
-local M = {}
-M = {
-  ensure_installed = {
-    "bash",
-    "c",
-    "css",
-    "cpp",
-    "go",
-    "gotmpl",
-    "html",
-    "javascript",
-    "jsdoc",
-    "json",
-    "json5",
-    "lua",
-    "markdown",
-    "markdown_inline",
-    "proto",
-    "python",
-    "query",
-    "rust",
-    "svelte",
-    "tsx",
-    "typescript",
-    "vim",
-    "vimdoc",
-    "vue",
-  },
+local M = {
+  ensure_installed = require("vdac.bootstrap").treesitter,
 }
 return M

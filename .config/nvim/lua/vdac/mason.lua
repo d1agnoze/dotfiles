@@ -1,37 +1,26 @@
 local M = {}
--- INFO: LSP, LINTER, FORMATTER
-M.ensure_installed = {
-  --LSP
-  "bash-language-server",
-  "buf-language-server",
-  "clangd",
-  "cmake-language-server",
-  "css-lsp",
-  "emmet-ls",
-  "gopls",
-  "html-lsp",
-  "lua-language-server",
-  "svelte-language-server",
-  "tailwindcss-language-server",
-  "typescript-language-server",
-  "docker-compose-language-service",
-  "dockerfile-language-server",
 
-  --DAP
-  "cpptools",
-  "go-debug-adapter",
+local init = require "vdac.bootstrap"
 
-  -- LINTER
-  "buf",
-  "cmakelang",
-  "golangci-lint-langserver",
-  -- FORMATTER
-  "stylua",
-  "cmakelang",
-  "buf",
-  "clang-format",
-  "prettier",
-  "prettierd",
-  "beautysh",
-}
+---@type string[]
+local installs = {}
+
+for _, lsp in ipairs(init.lsp) do
+  table.insert(installs, lsp.name)
+end
+
+for _, linter in ipairs(init.linters) do
+  table.insert(installs, linter)
+end
+
+for _, dap in ipairs(init.daps) do
+  table.insert(installs, dap)
+end
+
+for _, fmt in ipairs(init.fmts) do
+  table.insert(installs, fmt)
+end
+
+M.ensure_installed = installs
+
 return M

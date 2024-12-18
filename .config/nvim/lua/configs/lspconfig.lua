@@ -2,6 +2,7 @@
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
+local init = require "vdac.bootstrap"
 local lspconfig = require "lspconfig"
 local border = {
   { "🭽", "FloatBorder" },
@@ -17,23 +18,12 @@ local handlers = {
   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
 }
-local servers = {
-  "ts_ls",
-  "html",
-  "cssls",
-  "clangd",
-  "cmake",
-  "tailwindcss",
-  "emmet_ls",
-  "bashls",
-  "buf_ls",
-  "svelte",
-  "vuels",
-  "marksman",
-  "gopls",
-  "docker_compose_language_service",
-  "dockerls",
-}
+
+local servers = {}
+
+for _, lsp in ipairs(init.lsp) do
+  table.insert(servers, lsp.cmd)
+end
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -45,7 +35,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-lspconfig.lua_ls.setup {
+lspconfig["lua_ls"].setup {
   handlers = handlers,
   on_attach = on_attach,
   on_init = on_init,

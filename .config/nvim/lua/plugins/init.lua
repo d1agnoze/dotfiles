@@ -260,15 +260,6 @@ return {
     end,
   },
   {
-    "jay-babu/mason-nvim-dap.nvim",
-    cmd = { "DapInstall", "DapUninstall" },
-    dependencies = { "mfussenegger/nvim-dap", "williamboman/mason.nvim" },
-    config = function()
-      local opt = require "vdac.mason-dap"
-      require("mason-nvim-dap").setup(opt)
-    end,
-  },
-  {
     "echasnovski/mini.map",
     version = false,
     event = { "LspAttach" },

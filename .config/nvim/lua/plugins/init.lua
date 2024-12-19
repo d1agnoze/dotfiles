@@ -287,4 +287,10 @@ return {
       input_buffer_type = "dressing",
     },
   },
+  {
+    "Pocco81/HighStr.nvim",
+    event = { "BufEnter" },
+    opts = require("vdac.highstr").opts,
+    config = require("vdac.highstr").config(),
+  },
 }

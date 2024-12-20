@@ -260,13 +260,6 @@ return {
     end,
   },
   {
-    "echasnovski/mini.map",
-    version = false,
-    event = { "LspAttach" },
-    keys = require("vdac.minimap").keys,
-    config = require("vdac.minimap").config,
-  },
-  {
     "smjonas/inc-rename.nvim",
     event = { "LspAttach" },
     keys = {

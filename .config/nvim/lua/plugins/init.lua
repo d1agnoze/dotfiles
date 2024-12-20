@@ -276,14 +276,17 @@ return {
       },
     },
     dependencies = { "stevearc/dressing.nvim" },
-    opts = {
-      input_buffer_type = "dressing",
-    },
+    opts = { input_buffer_type = "dressing" },
   },
   {
     "Pocco81/HighStr.nvim",
     event = { "BufEnter" },
     opts = require("vdac.highstr").opts,
     config = require("vdac.highstr").config(),
+  },
+  {
+    "gorbit99/codewindow.nvim",
+    event = { "BufEnter" },
+    config = require("vdac.minimap").config,
   },
 }

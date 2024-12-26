@@ -67,10 +67,6 @@ return {
     "williamboman/mason.nvim",
     opts = require "vdac.mason",
   },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = require "vdac.tree-sitter",
-  },
   { "tpope/vim-dispatch", lazy = false },
   { "nvim-lua/plenary.nvim", lazy = false },
   {
@@ -82,18 +78,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
-    opts = {
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-          },
-        },
-      },
-    },
+    opts = require "vdac.tree-sitter",
   },
   {
     "stevearc/dressing.nvim",

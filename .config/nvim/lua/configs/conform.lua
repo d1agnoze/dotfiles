@@ -3,6 +3,7 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
+    json = { "fixjson", "prettier" },
     cmake = { "cmake_format" },
     cpp = { "clang-format" },
     go = { "gofmt" },

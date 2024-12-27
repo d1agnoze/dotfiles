@@ -19,6 +19,8 @@ o.foldenable = false
 
 local nvtree = require "nvchad.configs.nvimtree"
 nvtree.view.side = "right"
+-- nvtree.renderer.highlight_git = false
+nvtree.renderer.icons.glyphs.git.untracked = ""
 
 vim.filetype.add {
   filename = {

@@ -42,6 +42,7 @@ M.fmts = {
   "prettier",
   "prettierd",
   "beautysh",
+  "fixjson",
 }
 
 M.linters = {

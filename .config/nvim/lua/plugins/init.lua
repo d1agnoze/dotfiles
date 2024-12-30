@@ -54,6 +54,7 @@ return {
     opts = function()
       local M = require "nvchad.configs.cmp"
       table.insert(M.sources, { name = "codeium" })
+      table.insert(M.sources, { name = "copilot" })
     end,
   },
   {
@@ -112,6 +113,23 @@ return {
     opts = {},
   },
   {
+    "zbirenbaum/copilot-cmp",
+    event = "InsertEnter",
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+    dependencies = {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      config = function()
+        require("copilot").setup {
+          suggestion = { enabled = false },
+          panel = { enabled = false },
+        }
+      end,
+    },
+  },
+  {
     "folke/trouble.nvim",
     opts = require("vdac.trouble").opts,
     cmd = require("vdac.trouble").cmd,
@@ -136,6 +154,8 @@ return {
     event = { "LspAttach" },
     config = function()
       require("lsp_lines").setup()
+      vim.diagnostic.config { virtual_text = true }
+      vim.diagnostic.config { virtual_lines = { only_current_line = true } }
       vim.keymap.set("", "<Leader>tl", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
     end,
   },
@@ -170,6 +190,7 @@ return {
     "zeioth/garbage-day.nvim",
     dependencies = "neovim/nvim-lspconfig",
     event = "VeryLazy",
+    opts = { aggressive_mode = false },
   },
   {
     "nat-418/boole.nvim",

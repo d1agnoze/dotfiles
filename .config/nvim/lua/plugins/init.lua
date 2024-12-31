@@ -2,9 +2,7 @@ return {
   ---INFO: ESSENTIALS
   {
     "stevearc/conform.nvim",
-    config = function()
-      require "configs.conform"
-    end,
+    opts = require "configs.conform",
   },
   {
     "nvimtools/none-ls.nvim",
@@ -115,18 +113,14 @@ return {
   {
     "zbirenbaum/copilot-cmp",
     event = "InsertEnter",
-    config = function()
-      require("copilot_cmp").setup()
-    end,
+    opts = {},
     dependencies = {
       "zbirenbaum/copilot.lua",
       cmd = "Copilot",
-      config = function()
-        require("copilot").setup {
-          suggestion = { enabled = false },
-          panel = { enabled = false },
-        }
-      end,
+      opts = {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      },
     },
   },
   {
@@ -138,9 +132,7 @@ return {
   {
     "nvimdev/lspsaga.nvim",
     event = "BufRead",
-    config = function()
-      require("lspsaga").setup { lightbulb = { virtual_text = false } }
-    end,
+    opts = { lightbulb = { virtual_text = false } },
     dependencies = {
       "nvim-treesitter/nvim-treesitter", -- optional
       "nvim-tree/nvim-web-devicons", -- optional
@@ -195,42 +187,25 @@ return {
   {
     "nat-418/boole.nvim",
     event = "BufRead",
-    config = function()
-      require("boole").setup {
-        mappings = {
-          increment = "<C-a>",
-          decrement = "<C-x>",
-        },
-        -- User defined loops
-        additions = {
-          { "Foo", "Bar" },
-          { "tic", "tac", "toe" },
-        },
-        allow_caps_additions = {
-          { "enable", "disable" },
-          -- enable → disable
-          -- Enable → Disable
-          -- ENABLE → DISABLE
-        },
-      }
-    end,
+    opts = {
+      mappings = { increment = "<C-a>", decrement = "<C-x>" },
+      allow_caps_additions = { { "enable", "disable" } },
+    },
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown" },
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
-    config = function()
-      require("render-markdown").setup {
-        overrides = {
-          buftype = {
-            nofile = {
-              code = { left_pad = 0, right_pad = 0, style = "language" },
-              sign = { enabled = false },
-            },
+    opts = {
+      overrides = {
+        buftype = {
+          nofile = {
+            sign = { enabled = false },
+            code = { left_pad = 0, right_pad = 0, style = "language" },
           },
         },
-      }
-    end,
+      },
+    },
   },
   {
     "ray-x/go.nvim",
@@ -239,9 +214,7 @@ return {
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
     },
-    config = function()
-      require("go").setup()
-    end,
+    opts = {},
     event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries

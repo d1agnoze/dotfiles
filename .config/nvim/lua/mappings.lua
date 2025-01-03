@@ -174,4 +174,6 @@ map("n", "<leader>ts", function()
   end
 end, { desc = "Toggle tabstop between 8 and 2" })
 
-map("n", "*", "<cmd>keepjumps normal! mi*`i<CR>zz", { noremap = true, silent = true, desc="highlight current word" })
+map("n", "*", "<cmd>keepjumps normal! mi*`i<CR>zz", { noremap = true, silent = true, desc = "highlight current word" })
+
+map("n", "<leader>fr", "<cmd>Telescope registers<CR>", { noremap = true, silent = true, desc = "Telescope registers" })

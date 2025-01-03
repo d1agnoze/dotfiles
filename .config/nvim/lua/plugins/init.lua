@@ -24,19 +24,9 @@ return {
   },
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-telescope/telescope-dap.nvim",
-    },
     cmd = "Telescope",
-    opts = {
-      extensions_list = { "dap" },
-      extensions = {
-        dap = {
-          prompt_title = "[ Debugger ]",
-        },
-      },
-    },
+    dependencies = require("vdac.telescope").deps,
+    opts = require("vdac.telescope").opts,
   },
   {
     "L3MON4D3/LuaSnip",
@@ -267,5 +257,23 @@ return {
     "gorbit99/codewindow.nvim",
     event = { "BufEnter" },
     config = require("vdac.minimap").config,
+  },
+  {
+    "stevearc/aerial.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    event = { "LspAttach" },
+    opts = {},
+    keys = {
+      { "<leader>lis", "<cmd>AerialToggle<CR>", "n", desc = "Toggle Aerial" },
+    },
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      view = {
+        side = "right",
+      },
+      renderer = { icons = { glyphs = { git = { untracked = "" } } } },
+    },
   },
 }

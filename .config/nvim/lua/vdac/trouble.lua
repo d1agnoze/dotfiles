@@ -18,11 +18,11 @@ M.keys = {
     "<cmd>Trouble diagnostics toggle<cr>",
     desc = "Diagnostics (Trouble)",
   },
-  {
-    "<leader>lis",
-    "<cmd>Trouble symbols toggle<cr>",
-    desc = "Symbols (Trouble)",
-  },
+  -- {
+  --   "<leader>lis",
+  --   "<cmd>Trouble symbols toggle<cr>",
+  --   desc = "Symbols (Trouble)",
+  -- },
   {
     "<leader>lit",
     "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",

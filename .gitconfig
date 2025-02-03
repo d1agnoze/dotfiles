@@ -36,19 +36,6 @@
  ; Using diffview.nvim
 # Add the following to your .gitconfig file.
 
-[diff]
-    tool = meld
-[difftool]
-    prompt = false
-[difftool "meld"]
-    cmd = meld "$REMOTE" "$LOCAL" 
-
-# Add the following to your .gitconfig file.
-[merge]
-    tool = meld
-[mergetool "meld"]
-    cmd = meld "$REMOTE" "$BASE" "$LOCAL" --output "$MERGED"
-
 [core]
     pager = delta
 
@@ -62,3 +49,16 @@
 
 [merge]
     conflictstyle = zdiff3
+[merge]
+     tool = vscode
+[mergetool "vscode"]
+# Comment: Original way before three-way merge shown commented out
+#    cmd = code --wait $MERGED
+# Comment: For "Three-way merge"
+    cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+# Comment: End of "Extra Block"
+

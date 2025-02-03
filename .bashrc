@@ -106,6 +106,7 @@ if ! shopt -oq posix; then
 fi
 
 eval "$(oh-my-posh init bash --config ~/dotfiles/.config/oh-my-posh/theme.omp.json)"
+eval "$(zoxide init bash)"
 neofetch
 
 export NVM_DIR="$HOME/.nvm"

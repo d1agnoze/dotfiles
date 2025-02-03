@@ -41,7 +41,7 @@ return {
     "hrsh7th/nvim-cmp",
     opts = function()
       local M = require "nvchad.configs.cmp"
-      table.insert(M.sources, { name = "codeium" })
+      -- table.insert(M.sources, { name = "codeium" })
       table.insert(M.sources, { name = "copilot" })
     end,
   },
@@ -204,6 +204,7 @@ return {
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
     },
+    enabled = false,
     opts = {},
     event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
@@ -219,13 +220,17 @@ return {
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
       "williamboman/mason.nvim",
+      "mxsdev/nvim-dap-vscode-js",
+      {
+        "microsoft/vscode-js-debug",
+        version = "1.x",
+        build = "npm i && npm run compile vsDebugServerBundle && mv dist out",
+      },
     },
     config = function()
       require("nvim-dap-virtual-text").setup()
-      -- require("dap.ext.vscode").load_launchjs(nil, {})
       require("dap-go").setup()
-      require "vdac.dap_ui"
-      require "vdac.dap_keymap"
+      require "vdac.dap"
     end,
   },
   {

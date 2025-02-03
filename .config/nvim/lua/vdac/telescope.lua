@@ -7,6 +7,9 @@ M.deps = {
 }
 M.opts = {
   pickers = {
+    oldfiles = {
+      cwd_only = true,
+    },
     buffers = {
       initial_mode = "normal",
       mappings = {

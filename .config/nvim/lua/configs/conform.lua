@@ -13,6 +13,7 @@ local options = {
     javascriptreact = { "prettier" },
     proto = { "buf" },
     bash = { "beautysh" },
+    nix = { "nixpkgs-fmt" },
   },
 }
 

@@ -38,5 +38,18 @@ done
 echo -e "\e[1;92mLinking using stow\e[0m"
 cd ~/dotfiles/
 stow -D .
-stow .
+
+echo -e "\e[1;92mStow adopt linking plan\e[0m"
+stow --adopt -nv .
+
+echo -e "\e[1;94mProceed to run stow?\e[0m"
+select yn in "Yes" "No"; do
+    case $yn in
+      Yes ) stow --adopt .; break;;
+      No ) break ;;
+      *) echo "Invalid option";;
+    esac
+done
+
+
 cd -

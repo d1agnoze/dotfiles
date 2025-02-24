@@ -57,13 +57,20 @@ local tryc = s(
   )
 )
 
+local jsd = s({ trig = "jd", dscr = "Jsdoc" }, fmta(
+  [[
+  /**
+    * @<>
+    **/]]
+  , { i(1) }))
+
 local clog = s({ trig = "log", dscr = "Console log" }, fmta([[console.log(<>)]], { i(1, "var") }))
 local prdate = s({ trig = "date", namr = "Date", dscr = "Date in the form of YYYY-MM-DD" }, { func(date, {}) })
 
 ls.add_snippets(nil, {
   all = { prdate },
-  typescript = { sfc, ffc, clog, tryc },
-  javascript = { sfc, ffc, clog, tryc },
-  typescriptreact = { sfc, ffc, clog, tryc },
-  javascriptreact = { sfc, ffc, clog, tryc },
+  typescript = { sfc, ffc, clog, tryc, jsd },
+  javascript = { sfc, ffc, clog, tryc, jsd },
+  typescriptreact = { sfc, ffc, clog, tryc, jsd },
+  javascriptreact = { sfc, ffc, clog, tryc, jsd },
 })

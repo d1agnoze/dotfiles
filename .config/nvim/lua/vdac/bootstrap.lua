@@ -1,6 +1,7 @@
 ---@class LspConf
 ---@field name string plugin's name
 ---@field cmd string cmd name
+---@field override? table
 
 ---@class Bootstrap
 ---@field treesitter string[]
@@ -23,11 +24,11 @@ M.lsp = {
   { name = "lua-language-server", cmd = "lua_ls" },
   { name = "svelte-language-server", cmd = "svelte" },
   { name = "tailwindcss-language-server", cmd = "tailwindcss" },
-  { name = "typescript-language-server", cmd = "ts_ls" },
   { name = "docker-compose-language-service", cmd = "docker_compose_language_service" },
   { name = "dockerfile-language-server", cmd = "dockerls" },
   { name = "yaml-language-server", cmd = "yamlls" },
   { name = "nil", cmd = "nil_ls" },
+  { name = "typescript-language-server", cmd = "ts_ls", override = {} },
 }
 
 M.daps = {

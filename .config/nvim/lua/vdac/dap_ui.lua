@@ -1,5 +1,9 @@
 require("dapui").setup()
 
+vim.api.nvim_create_user_command("DapCloseUI", function()
+  vim.cmd [[lua require("dapui").close()]]
+end, {})
+
 local dap, dapui = require "dap", require "dapui"
 dap.listeners.before.attach.dapui_config = function()
   dapui.open()

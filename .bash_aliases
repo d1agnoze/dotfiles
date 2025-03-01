@@ -1,28 +1,11 @@
 #!/bin/bash
-# ~/.bash_aliases: executed by bash(1) for non-login shells.
-#
-#
-# Quit ranger and leaves at current directory
-function ranger {
-    local IFS=$'\t\n'
-    local tempfile="$(mktemp -t tmp.XXXXXX)"
-    local ranger_cmd=(
-        command
-        ranger
-        --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
-    )
-    
-    ${ranger_cmd[@]} "$@"
-    if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
-        cd -- "$(cat "$tempfile")" || return
-    fi
-    command rm -f -- "$tempfile" 2>/dev/null
-}
 
 function fzfdiff {
   preview="git diff $@ --color=always -- {-1}"
   git diff $@ --name-only | fzf -m --ansi --preview $preview
 }
+
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -32,7 +15,7 @@ alias l='ls -CF'
 #tmux
 alias ta='tmux attach'
 alias tks='tmux kill-session'
-alias c='clear && neofetch'
+alias c='clear && fastfetch'
 
 
 #WSL shortcuts

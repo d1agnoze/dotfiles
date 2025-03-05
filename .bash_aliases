@@ -25,3 +25,5 @@ fi
 
 #lazygit
 alias lg='lazygit'
+#lazydocker
+alias ldk='lazydocker'

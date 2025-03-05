@@ -69,17 +69,6 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     opts = require "vdac.tree-sitter",
   },
-  {
-    "stevearc/dressing.nvim",
-    lazy = false,
-    opts = {
-      select = {
-        telescope = {
-          initial_mode = "normal",
-        },
-      },
-    },
-  },
   -----------------------------------------------------
   --INFO: TOOLS
   {
@@ -99,19 +88,6 @@ return {
       "hrsh7th/nvim-cmp",
     },
     opts = {},
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    event = "InsertEnter",
-    opts = {},
-    dependencies = {
-      "zbirenbaum/copilot.lua",
-      cmd = "Copilot",
-      opts = {
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      },
-    },
   },
   {
     "folke/trouble.nvim",
@@ -134,6 +110,7 @@ return {
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     event = { "LspAttach" },
+    ft = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
     config = function()
       require("lsp_lines").setup()
       vim.diagnostic.config { virtual_text = true }
@@ -155,18 +132,6 @@ return {
     config = function()
       require "vdac.todo"
     end,
-  },
-  {
-    "NvChad/nvim-colorizer.lua",
-    opts = {
-      user_default_options = {
-        mode = "background", -- You can change the mode to "foreground" to colorize foreground color codes
-        RGB = true, -- Enable RGB color notation support
-        RRGGBB = true, -- Enable RRGGBB color notation support
-        names = false, -- Disable color name highlighting (e.g., "red", "blue", etc.)
-        css = true, -- Disable CSS color notation support
-      },
-    },
   },
   {
     "zeioth/garbage-day.nvim",
@@ -198,34 +163,14 @@ return {
     },
   },
   {
-    "ray-x/go.nvim",
-    dependencies = { -- optional packages
-      "ray-x/guihua.lua",
-      "neovim/nvim-lspconfig",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    enabled = false,
-    opts = {},
-    event = { "CmdlineEnter" },
-    ft = { "go", "gomod" },
-    build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-  },
-  {
     "mfussenegger/nvim-dap",
     dependencies = {
       "leoluz/nvim-dap-go",
-      "nvim-neotest/nvim-nio",
       "mfussenegger/nvim-dap",
-      "nvim-neotest/nvim-nio",
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
       "williamboman/mason.nvim",
       "mxsdev/nvim-dap-vscode-js",
-      {
-        "microsoft/vscode-js-debug",
-        version = "1.x",
-        build = "npm i && npm run compile vsDebugServerBundle && mv dist out",
-      },
     },
     config = function()
       require("nvim-dap-virtual-text").setup()
@@ -233,36 +178,6 @@ return {
       require "configs.dap"
       require "vdac.dap_ui"
     end,
-  },
-  {
-    "smjonas/inc-rename.nvim",
-    event = { "LspAttach" },
-    keys = {
-      {
-        "<leader>rn",
-        function()
-          return ":IncRename " .. vim.fn.expand "<cword>"
-        end,
-        "n",
-        expr = true,
-        remap = true,
-        desc = "lsp rename",
-        silent = true,
-      },
-    },
-    dependencies = { "stevearc/dressing.nvim" },
-    opts = { input_buffer_type = "dressing" },
-  },
-  {
-    "Pocco81/HighStr.nvim",
-    event = { "BufEnter" },
-    opts = require("vdac.highstr").opts,
-    config = require("vdac.highstr").config(),
-  },
-  {
-    "gorbit99/codewindow.nvim",
-    event = { "BufEnter" },
-    config = require("vdac.minimap").config,
   },
   {
     "stevearc/aerial.nvim",
@@ -281,19 +196,5 @@ return {
       },
       renderer = { icons = { glyphs = { git = { untracked = "" } } } },
     },
-  },
-  {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "nvim-neotest/nvim-nio",
-      "nvim-lua/plenary.nvim",
-      "antoinemadec/FixCursorHold.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "marilari88/neotest-vitest",
-    },
-    event = { "LspAttach" },
-    config = function()
-      require "configs.neotest"
-    end,
   },
 }

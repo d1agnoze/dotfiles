@@ -177,23 +177,3 @@ end, { desc = "Toggle tabstop between 8 and 2" })
 map("n", "*", "<cmd>keepjumps normal! mi*`i<CR>zz", { noremap = true, silent = true, desc = "highlight current word" })
 
 map("n", "<leader>fr", "<cmd>Telescope registers<CR>", { noremap = true, silent = true, desc = "Telescope registers" })
-
-map("n", "<leader>dt", function()
-  require("neotest").run.run { strategy = "dap" }
-end, { desc = "DAP Debug use Neotest" })
-
-map("n", "<leader>tT", function()
-  require("neotest").run.run(vim.uv.cwd())
-end, { desc = "Run All Test Files (Neotest)" })
-
-map("n", "<leader>ta", function()
-  require("neotest").summary.toggle()
-end, { desc = "Toggle Summary (Neotest)" })
-
-map("n", "<leader>tO", function()
-  require("neotest").output_panel.toggle()
-end, { desc = "Toggle Output Panel (Neotest)" })
-
-map("n", "<leader>tS", function()
-  require("neotest").run.stop()
-end, { desc = "Stop (Neotest)" })

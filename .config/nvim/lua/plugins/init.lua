@@ -268,9 +268,25 @@ return {
     "stevearc/aerial.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     event = { "LspAttach" },
-    opts = {},
+    enabled = false,
+    opts = {
+      filter_kind = false,
+    },
     keys = {
       { "<leader>lis", "<cmd>AerialToggle<CR>", "n", desc = "Toggle Aerial" },
+    },
+  },
+
+  {
+    "hedyhli/outline.nvim",
+    event = { "LspAttach" },
+    keys = {
+      { "<leader>lis", "<cmd>Outline<CR>", "n", desc = "Toggle outline" },
+    },
+    opts = {
+      outline_window = { width = 15 },
+      symbol_folding = { auto_unfold = { hovered = false, only = false } },
+      symbols = { filter = { "String", "Variable", exclude = true } },
     },
   },
   {

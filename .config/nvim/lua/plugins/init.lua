@@ -166,14 +166,12 @@ return {
     "mfussenegger/nvim-dap",
     dependencies = {
       "leoluz/nvim-dap-go",
-      "mfussenegger/nvim-dap",
-      "rcarriga/nvim-dap-ui",
-      "theHamsta/nvim-dap-virtual-text",
       "williamboman/mason.nvim",
+      "rcarriga/nvim-dap-ui",
       "mxsdev/nvim-dap-vscode-js",
+      "nvim-neotest/nvim-nio",
     },
     config = function()
-      require("nvim-dap-virtual-text").setup()
       require("dap-go").setup()
       require "configs.dap"
       require "vdac.dap_ui"

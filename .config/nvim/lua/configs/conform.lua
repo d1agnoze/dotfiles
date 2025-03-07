@@ -2,7 +2,6 @@ local options = {
   formatters_by_ft = {
     lua = { "stylua" },
     css = { "prettier" },
-    html = { "prettier" },
     json = { "fixjson", "prettier" },
     cmake = { "cmake_format" },
     cpp = { "clang-format" },

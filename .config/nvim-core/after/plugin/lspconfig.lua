@@ -27,6 +27,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<leader>fm", vim.lsp.buf.format, "Format code")
 		map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 		map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+		map("sh", vim.lsp.buf.signature_help, "Lsp function [S]ignature [H]elp")
+
 
 		map("<C-Space>", "<C-X><C-O>", "[LSP] Trigger Omni Completion", { "i" })
 		nmap("<Tab>", "<C-n>", "[LSP] Omni func next item")

@@ -27,3 +27,6 @@ fi
 alias lg='lazygit'
 #lazydocker
 alias ldk='lazydocker'
+
+alias vim='NVIM_APPNAME=nvim-core nvim'
+

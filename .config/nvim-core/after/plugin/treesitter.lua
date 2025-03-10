@@ -1,6 +1,6 @@
 vim.keymap.set(
 	"n",
-	"<leader>sv",
+	"<C-m>",
 	"<cmd>TSToggle highlight<CR>",
 	{ desc = "[Treesitter] toggle syntax highlghting", noremap = true }
 )

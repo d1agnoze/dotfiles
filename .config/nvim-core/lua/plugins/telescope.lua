@@ -10,8 +10,8 @@ return {
 				layout_strategy = "horizontal",
 				layout_config = {
 					horizontal = {
-						height = 0.5,  -- Reduce the height of the telescope window
-						preview_cutoff = 120,  -- Hide preview if window is too small
+						height = 0.5, -- Reduce the height of the telescope window
+						preview_cutoff = 120, -- Hide preview if window is too small
 						prompt_position = "top",
 					},
 				},
@@ -19,6 +19,10 @@ return {
 			},
 			pickers = {
 				oldfiles = { cwd_only = true },
+				lsp_references = { initial_mode = "normal" },
+				lsp_document_symbols = { initial_mode = "normal" },
+				lsp_definitions = { initial_mode = "normal" },
+				git_status = { initial_mode = "normal" },
 				buffers = {
 					initial_mode = "normal",
 					mappings = {

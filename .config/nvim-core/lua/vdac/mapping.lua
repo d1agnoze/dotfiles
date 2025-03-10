@@ -52,3 +52,6 @@ map("n", "<leader>ts", function()
 end, { desc = "Toggle tabstop between 8 and 2" })
 
 map("n", "<leader>fr", "<cmd>Telescope registers<CR>", { noremap = true, silent = true, desc = "Telescope registers" })
+map('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true, desc = "Buffer next" })
+map('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true, desc = "Buffer preivous" })
+map('n', '<leader>x', ':q<CR>', { noremap = true, silent = true, desc = "Quit Buffer" })

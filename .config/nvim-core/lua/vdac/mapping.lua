@@ -58,3 +58,4 @@ map('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true, desc = "Buffer 
 map('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true, desc = "Buffer previous" })
 map('n', '<leader>x', ':q<CR>', { noremap = true, silent = true, desc = "Quit Buffer" })
 map('n', '<leader>lx', ':luafile %<CR>', { noremap = true, silent = true, desc = "Execute current lua file" })
+map("n", "<C-m>", "<cmd>TSToggle highlight<CR>", { desc = "[Treesitter] toggle syntax highlghting", noremap = true })

@@ -19,7 +19,7 @@ local lsp_filter = {
 	-- "Number",
 	-- "Object",
 	-- "Operator",
-	"Package",
+	-- "Package",
 	-- "Property",
 	-- "String",
 	"Struct",
@@ -35,10 +35,10 @@ local function on_list(options)
 		end
 	end
 
-	-- vim.notify(vim.inspect(options))
-	vim.fn.setqflist({}, ' ', options)
+	vim.fn.setloclist(0, {}, ' ', { title = options.title, items = options.items })
+	vim.cmd.lopen()
 end
 
 vim.keymap.set("n", "<leader>lis", function()
-	vim.lsp.buf.document_symbol({ on_list = on_list, loclist = true })
+	vim.lsp.buf.document_symbol({ on_list = on_list })
 end, { silent = true })

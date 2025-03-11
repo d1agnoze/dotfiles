@@ -1,5 +1,7 @@
 local map = vim.keymap.set
 
+map('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true, desc = "noh" })
+map('v', 'o', 'g_', { noremap = true, silent = true, desc = "Visual go to end of line" })
 map("n", "<C-s>", ":update<CR>", { desc = "Save file if modified" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "move selected line down" })
@@ -53,5 +55,5 @@ end, { desc = "Toggle tabstop between 8 and 2" })
 
 map("n", "<leader>fr", "<cmd>Telescope registers<CR>", { noremap = true, silent = true, desc = "Telescope registers" })
 map('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true, desc = "Buffer next" })
-map('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true, desc = "Buffer preivous" })
+map('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true, desc = "Buffer previous" })
 map('n', '<leader>x', ':q<CR>', { noremap = true, silent = true, desc = "Quit Buffer" })

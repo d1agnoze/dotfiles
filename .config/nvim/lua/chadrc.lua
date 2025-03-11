@@ -12,7 +12,7 @@ M.base46 = {
     TelescopeSelection = { bg = "#32CD32", fg = "black" },
   },
   transparency = false,
-  theme = "onedark",
+  theme = "vscode_dark",
 }
 M.nvdash = {
   load_on_startup = true,

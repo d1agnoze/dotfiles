@@ -20,7 +20,7 @@ return {
 			pickers = {
 				oldfiles = { cwd_only = true },
 				lsp_references = { initial_mode = "normal" },
-				lsp_document_symbols = { initial_mode = "normal" },
+				lsp_document_symbols = { initial_mode = "normal", ignore_symbols = "variable" },
 				lsp_definitions = { initial_mode = "normal" },
 				git_status = { initial_mode = "normal" },
 				buffers = {

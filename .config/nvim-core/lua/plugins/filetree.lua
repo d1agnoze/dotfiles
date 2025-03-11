@@ -3,9 +3,9 @@ return {
 	opts = {
 		git = { enable = false },
 		view = { side = "right" },
-		renderer = { 
-			icons = { 
-				glyphs = { 
+		renderer = {
+			icons = {
+				glyphs = {
 					default = "-",
 					symlink = "~",
 					bookmark = "*",

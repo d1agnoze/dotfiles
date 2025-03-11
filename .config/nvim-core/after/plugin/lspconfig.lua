@@ -1,6 +1,13 @@
 local lspconfig = require("lspconfig")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+--- Update status line
+vim.api.nvim_create_autocmd("LspProgress", {
+	callback = function()
+		vim.cmd("redrawstatus")
+	end
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 	callback = function(event)
@@ -17,8 +24,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			end, { buffer = event.buf, desc = "LSP: " .. desc, expr = true, noremap = true })
 		end
 
-		map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-		map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+		map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+		map("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
 		map("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 		map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 		map("<leader>ds", require("telescope.builtin").diagnostics, "Type [D]efinition")

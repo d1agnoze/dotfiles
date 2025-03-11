@@ -57,3 +57,4 @@ map("n", "<leader>fr", "<cmd>Telescope registers<CR>", { noremap = true, silent 
 map('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true, desc = "Buffer next" })
 map('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true, desc = "Buffer previous" })
 map('n', '<leader>x', ':q<CR>', { noremap = true, silent = true, desc = "Quit Buffer" })
+map('n', '<leader>lx', ':luafile %<CR>', { noremap = true, silent = true, desc = "Execute current lua file" })

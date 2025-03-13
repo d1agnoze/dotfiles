@@ -10,6 +10,7 @@ o.statuscolumn = "%s %l %r "
 o.wrap = false
 o.clipboard = "unnamedplus"
 o.foldenable = false
+o.tabstop = 8
 
 vim.filetype.add({
 	filename = {
@@ -27,4 +28,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank()
 	end,
+})
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+	pattern = { "quickfix" },
+	callback = function()
+		vim.keymap.set("n", "<CR>", "<CR>")
+	end
 })

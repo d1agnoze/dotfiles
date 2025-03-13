@@ -15,6 +15,7 @@ o.clipboard = "unnamedplus"
 o.foldmethod = "expr"
 o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldenable = false
+o.tabstop  = 4
 
 vim.filetype.add {
   filename = {

@@ -41,21 +41,21 @@ map("n", "<leader>fk", "<CMD>:Telescope keymaps<CR>", { desc = "Telescope keymap
 map("n", "<leader>ts", function()
 	local current_tabstop = vim.o.tabstop
 	if current_tabstop == 8 then
-		vim.o.tabstop = 2
-		vim.o.shiftwidth = 2
-		vim.o.softtabstop = 2
-		print("Tabstop set to 2")
+		vim.o.tabstop = 4
+		vim.o.shiftwidth = 4
+		vim.o.softtabstop = 4
+		print("Tabstop set to 4")
 	else
 		vim.o.tabstop = 8
 		vim.o.shiftwidth = 8
 		vim.o.softtabstop = 8
 		print("Tabstop set to 8")
 	end
-end, { desc = "Toggle tabstop between 8 and 2" })
+end, { desc = "Toggle tabstop between 8 and 4" })
 
 map("n", "<leader>fr", "<cmd>Telescope registers<CR>", { noremap = true, silent = true, desc = "Telescope registers" })
 map('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true, desc = "Buffer next" })
 map('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true, desc = "Buffer previous" })
-map('n', '<leader>x', ':q<CR>', { noremap = true, silent = true, desc = "Quit Buffer" })
+map('n', '<leader>x', ':bd<CR>', { noremap = true, silent = true, desc = "Quit Buffer" })
 map('n', '<leader>lx', ':luafile %<CR>', { noremap = true, silent = true, desc = "Execute current lua file" })
 map("n", "<C-m>", "<cmd>TSToggle highlight<CR>", { desc = "[Treesitter] toggle syntax highlghting", noremap = true })

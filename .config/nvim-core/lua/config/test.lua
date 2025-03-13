@@ -35,10 +35,12 @@ local function on_list(options)
 		end
 	end
 
-	vim.fn.setloclist(0, {}, ' ', { title = options.title, items = options.items })
+	vim.fn.setloclist(0, {}, ' ', options)
 	vim.cmd.lopen()
 end
 
-vim.keymap.set("n", "<leader>lis", function()
-	vim.lsp.buf.document_symbol({ on_list = on_list })
-end, { silent = true })
+local function document_symbol ()
+	vim.lsp.buf.document_symbol{ on_list = on_list }
+end
+
+vim.keymap.set("n", "<leader>lis", document_symbol , {desc = "document_symbol"} )

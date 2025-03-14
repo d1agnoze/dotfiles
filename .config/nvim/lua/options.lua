@@ -15,7 +15,9 @@ o.clipboard = "unnamedplus"
 o.foldmethod = "expr"
 o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldenable = false
-o.tabstop  = 4
+o.tabstop = 8
+o.shiftwidth = 8
+o.softtabstop = 8
 
 vim.filetype.add {
   filename = {
@@ -30,8 +32,7 @@ vim.fn.sign_define("DapBreakpoint", { text = "✋", texthl = "", linehl = "", nu
 vim.fn.sign_define("DapStopped", { text = "🛑", texthl = "", linehl = "", numhl = "" })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
-

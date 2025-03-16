@@ -24,24 +24,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- 		return vim.fn.pumvisible() == 1 and original or keys
 		-- 	end, { buffer = event.buf, desc = "LSP: " .. desc, expr = true, noremap = true })
 		-- end
+		--
+		-- map("<C-Space>", "<C-X><C-O>", "[LSP] Trigger Omni Completion", { "i" })
+		-- nmap("<Tab>", "<C-n>", "[LSP] Omni func next item")
+		-- nmap("<S-Tab>", "<C-p>", "[LSP] Omni func next item")
 
 		map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 		map("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
 		map("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 		map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 		map("<leader>ds", require("telescope.builtin").diagnostics, "Type [D]efinition")
-		map("<leader>fs", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+		map("<leader>lis", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 		map("<leader>fd", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 		map("<leader>ra", vim.lsp.buf.rename, "[R]e[n]ame")
 		map("<leader>fm", vim.lsp.buf.format, "Format code")
 		map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 		map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 		map("sh", vim.lsp.buf.signature_help, "Lsp function [S]ignature [H]elp")
-
-
-		-- map("<C-Space>", "<C-X><C-O>", "[LSP] Trigger Omni Completion", { "i" })
-		-- nmap("<Tab>", "<C-n>", "[LSP] Omni func next item")
-		-- nmap("<S-Tab>", "<C-p>", "[LSP] Omni func next item")
 	end,
 })
 

@@ -1,3 +1,16 @@
+local lsp_filter = {
+	"Class",
+	"Constant",
+	"Enum",
+	"EnumMember",
+	"Function",
+	"Interface",
+	"Namespace",
+	"Struct",
+	-- "Array", "Boolean", "Constructor", "Event", "Field", "File", "Key", "Method", "Module", "Null", "Number", "Object",
+	-- "Operator", "Package", "Property", "String", "TypeParameter", "Variable",
+}
+
 return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.8",
@@ -20,7 +33,13 @@ return {
 			pickers = {
 				oldfiles = { cwd_only = true },
 				lsp_references = { initial_mode = "normal" },
-				lsp_document_symbols = { initial_mode = "normal", ignore_symbols = "variable" },
+				lsp_document_symbols = {
+					initial_mode = "normal",
+					theme = "dropdown",
+					symbols = lsp_filter,
+					mappings = { n = { ["<C-c>"] = actions.close } },
+					previewer = false,
+				},
 				lsp_definitions = { initial_mode = "normal" },
 				git_status = { initial_mode = "normal" },
 				buffers = {

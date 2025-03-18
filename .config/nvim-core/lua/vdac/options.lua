@@ -30,8 +30,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("BufReadPost", {
-	pattern = { "quickfix" },
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "qf" },
 	callback = function()
 		vim.keymap.set("n", "<CR>", "<CR>")
 	end

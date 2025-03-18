@@ -6,8 +6,8 @@ local lsp_filter = {
 	"Function",
 	"Interface",
 	"Namespace",
-	"Struct",
-	-- "Array", "Boolean", "Constructor", "Event", "Field", "File", "Key", "Method", "Module", "Null", "Number", "Object",
+	"Method",
+	-- "Struct", "Array", "Boolean", "Constructor", "Event", "Field", "File", "Key", , "Module", "Null", "Number", "Object",
 	-- "Operator", "Package", "Property", "String", "TypeParameter", "Variable",
 }
 
@@ -40,13 +40,18 @@ return {
 					mappings = { n = { ["<C-c>"] = actions.close } },
 					previewer = false,
 				},
-				lsp_definitions = { initial_mode = "normal" },
-				git_status = { initial_mode = "normal" },
+				diagnostics = {
+					initial_mode = "normal",
+					mappings = { n = { ["<C-c>"] = actions.close } },
+
+				},
+				lsp_definitions = { initial_mode = "normal", mappings = { n = { ["<C-c>"] = actions.close } } },
+				git_status = { initial_mode = "normal", mappings = { n = { ["<C-c>"] = actions.close } } },
 				buffers = {
 					initial_mode = "normal",
 					mappings = {
 						i = { ["<esc>"] = actions.close },
-						n = { ["dd"] = actions.delete_buffer + actions.move_to_top },
+						n = { ["dd"] = actions.delete_buffer + actions.move_to_top, ["<C-c>"] = actions.close },
 					},
 				},
 				registers = { initial_mode = "normal", previewer = true },

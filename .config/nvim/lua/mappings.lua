@@ -162,38 +162,18 @@ map("v", "<leader>rs", ":vimgrep // %<Left><Left><Left>", { desc = "find in sele
 map("n", "<leader>ts", function()
   local current_tabstop = vim.o.tabstop
   if current_tabstop == 8 then
-    vim.o.tabstop = 2
-    vim.o.shiftwidth = 2
-    vim.o.softtabstop = 2
-    print "Tabstop set to 2"
+    vim.o.tabstop = 4
+    vim.o.shiftwidth = 4
+    vim.o.softtabstop = 4
+    print "Tabstop set to 4"
   else
     vim.o.tabstop = 8
     vim.o.shiftwidth = 8
     vim.o.softtabstop = 8
     print "Tabstop set to 8"
   end
-end, { desc = "Toggle tabstop between 8 and 2" })
+end, { desc = "Toggle tabstop between 8 and 4" })
 
 map("n", "*", "<cmd>keepjumps normal! mi*`i<CR>zz", { noremap = true, silent = true, desc = "highlight current word" })
 
 map("n", "<leader>fr", "<cmd>Telescope registers<CR>", { noremap = true, silent = true, desc = "Telescope registers" })
-
-map("n", "<leader>dt", function()
-  require("neotest").run.run { strategy = "dap" }
-end, { desc = "DAP Debug use Neotest" })
-
-map("n", "<leader>tT", function()
-  require("neotest").run.run(vim.uv.cwd())
-end, { desc = "Run All Test Files (Neotest)" })
-
-map("n", "<leader>ta", function()
-  require("neotest").summary.toggle()
-end, { desc = "Toggle Summary (Neotest)" })
-
-map("n", "<leader>tO", function()
-  require("neotest").output_panel.toggle()
-end, { desc = "Toggle Output Panel (Neotest)" })
-
-map("n", "<leader>tS", function()
-  require("neotest").run.stop()
-end, { desc = "Stop (Neotest)" })

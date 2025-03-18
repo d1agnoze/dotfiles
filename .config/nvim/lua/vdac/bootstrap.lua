@@ -29,6 +29,7 @@ M.lsp = {
   { name = "yaml-language-server", cmd = "yamlls" },
   { name = "nil", cmd = "nil_ls" },
   { name = "typescript-language-server", cmd = "ts_ls", override = {} },
+  { name = "json-lsp", cmd = "jsonls", override = {} },
 }
 
 M.daps = {

@@ -1,7 +1,5 @@
-require "nvchad.options"
-
 -- add yours here!
-
+--
 local o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!
 -- o.hlsearch = false
@@ -11,28 +9,30 @@ o.relativenumber = true
 o.statuscolumn = "%s %l %r "
 o.wrap = false
 o.clipboard = "unnamedplus"
-
-o.foldmethod = "expr"
-o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldenable = false
 o.tabstop = 8
-o.shiftwidth = 8
-o.softtabstop = 8
 
-vim.filetype.add {
-  filename = {
-    ["docker-compose.yml"] = "yaml.docker-compose",
-    ["docker-compose.yaml"] = "yaml.docker-compose",
-    ["compose.yml"] = "yaml.docker-compose",
-    ["compose.yaml"] = "yaml.docker-compose",
-  },
-}
+vim.filetype.add({
+	filename = {
+		["docker-compose.yml"] = "yaml.docker-compose",
+		["docker-compose.yaml"] = "yaml.docker-compose",
+		["compose.yml"] = "yaml.docker-compose",
+		["compose.yaml"] = "yaml.docker-compose",
+	},
+})
 
 vim.fn.sign_define("DapBreakpoint", { text = "✋", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapStopped", { text = "🛑", texthl = "", linehl = "", numhl = "" })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "qf" },
+	callback = function()
+		vim.keymap.set("n", "<CR>", "<CR>")
+	end
 })

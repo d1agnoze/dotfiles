@@ -11,8 +11,8 @@ M.base46 = {
     Visual = { bg = "green", fg = "black" },
     TelescopeSelection = { bg = "#32CD32", fg = "black" },
   },
-  transparency = true,
-  theme = "doomchad",
+  transparency = false,
+  theme = "solarized_osaka",
 }
 M.nvdash = {
   load_on_startup = true,

@@ -34,6 +34,9 @@ return {
 				oldfiles = { cwd_only = true },
 				lsp_references = { initial_mode = "normal" },
 				lsp_document_symbols = {
+					layout_config = {
+						height = 0.8,
+					},
 					initial_mode = "normal",
 					theme = "dropdown",
 					symbols = lsp_filter,
@@ -43,7 +46,6 @@ return {
 				diagnostics = {
 					initial_mode = "normal",
 					mappings = { n = { ["<C-c>"] = actions.close } },
-
 				},
 				lsp_definitions = { initial_mode = "normal", mappings = { n = { ["<C-c>"] = actions.close } } },
 				git_status = { initial_mode = "normal", mappings = { n = { ["<C-c>"] = actions.close } } },

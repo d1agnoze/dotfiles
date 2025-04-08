@@ -31,6 +31,7 @@ M.lsp = {
   { name = "typescript-language-server", cmd = "ts_ls", override = {} },
   { name = "rust-analyzer", cmd = "rust_analyzer", override = {} },
   { name = "json-lsp", cmd = "jsonls", override = {} },
+  { name = "pyright", cmd = "pyright", override = {} },
 }
 
 M.daps = {

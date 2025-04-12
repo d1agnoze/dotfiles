@@ -34,8 +34,8 @@ function Statusline()
 	return table.concat(parts)
 end
 
--- -- Set the statusline
--- vim.o.statusline = '%!v:lua.Statusline()'
+-- Set the statusline
+vim.o.statusline = '%!v:lua.Statusline()'
 --
 -- -- Optional: Update statusline when switching buffers
 -- vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {

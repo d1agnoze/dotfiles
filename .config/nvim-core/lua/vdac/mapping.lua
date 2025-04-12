@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 map('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true, desc = "noh" })
 map('v', 'o', 'g_', { noremap = true, silent = true, desc = "Visual go to end of line" })
-map("n", "<C-s>", ":update<CR>", { desc = "Save file if modified" })
+map("n", "<C-s>", ":update<CR>", { desc = "Save file" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "move selected line down" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })

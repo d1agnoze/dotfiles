@@ -13,6 +13,7 @@ local options = {
     proto = { "buf" },
     bash = { "beautysh" },
     nix = { "nixpkgs-fmt" },
+    sql = { "pg_format" },
   },
 }
 

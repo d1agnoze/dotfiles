@@ -108,17 +108,6 @@ return {
   ---INFO: BETTER EXPERIENCE
   { "tpope/vim-surround", lazy = false },
   {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    event = { "LspAttach" },
-    ft = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
-    config = function()
-      require("lsp_lines").setup()
-      vim.diagnostic.config { virtual_text = true }
-      vim.diagnostic.config { virtual_lines = { only_current_line = true } }
-      vim.keymap.set("", "<Leader>tl", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
-    end,
-  },
-  {
     "windwp/nvim-ts-autotag",
     event = "BufRead",
     config = function()
@@ -210,5 +199,14 @@ return {
       },
       renderer = { icons = { glyphs = { git = { untracked = "" } } } },
     },
+  },
+  {
+    "mistweaverco/kulala.nvim",
+    keys = {
+      { "<leader>ks", desc = "Kulala: Send request" },
+      { "<leader>ko", desc = "Kulala: Open scratchpad" },
+    },
+    ft = { "http", "rest" },
+    opts = require('vdac.kulala')
   },
 }

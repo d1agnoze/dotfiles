@@ -11,26 +11,22 @@ vim.api.nvim_create_autocmd("LspProgress", {
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 	callback = function(event)
-		local client = vim.lsp.get_client_by_id(event.data.client_id)
-		if client and client:supports_method("textDocument/completion") then
-			vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
-		end
+		-- local client = vim.lsp.get_client_by_id(event.data.client_id)
+		-- if client and client:supports_method("textDocument/completion") then
+		-- 	vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
+		-- end
 
 		local map = function(keys, func, desc, mode)
 			mode = mode or "n"
 			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 		end
 
-		local nmap = function(keys, original, desc, mode)
-			mode = mode or "i"
-			vim.keymap.set(mode, keys, function()
-				return vim.fn.pumvisible() == 1 and original or keys
-			end, { buffer = event.buf, desc = "LSP: " .. desc, expr = true, noremap = true })
-		end
-
-		nmap("<C-Space>", "<C-X><C-O>", "[LSP] Trigger Omni Completion", { "i" })
-		nmap("<Tab>", "<C-n>", "[LSP] Omni func next item")
-		nmap("<S-Tab>", "<C-p>", "[LSP] Omni func next item")
+		-- local nmap = function(keys, original, desc, mode)
+		-- 	mode = mode or "i"
+		-- 	vim.keymap.set(mode, keys, function()
+		-- 		return vim.fn.pumvisible() == 1 and original or keys
+		-- 	end, { buffer = event.buf, desc = "LSP: " .. desc, expr = true, noremap = true })
+		-- end
 
 		map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 		map("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
@@ -58,6 +54,10 @@ vim.diagnostic.config({
 		spacing = 2,
 	},
 })
+
+vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("gopls")
+vim.lsp.enable("lua_ls")
 
 lspconfig.rust_analyzer.setup({ capabilities = capabilities })
 

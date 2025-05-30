@@ -1,23 +1,23 @@
 -- EXAMPLE
+local map = vim.keymap.set
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 local init = require "vdac.bootstrap"
 local lspconfig = require "lspconfig"
-local border = {
-  { "🭽", "FloatBorder" },
-  { "▔", "FloatBorder" },
-  { "🭾", "FloatBorder" },
-  { "▕", "FloatBorder" },
-  { "🭿", "FloatBorder" },
-  { "▁", "FloatBorder" },
-  { "🭼", "FloatBorder" },
-  { "▏", "FloatBorder" },
-}
-local handlers = {
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-}
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("my.lsp", {}),
+  callback = function(args)
+    local function opts(desc)
+      return { buffer = args.buf, desc = "LSP " .. desc }
+    end
+    map("n", "gi", vim.lsp.buf.implementation, opts "Go to implementation")
+    map("n", "<leader>sh", vim.lsp.buf.signature_help, opts "Show signature help")
+    map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Code action")
+    map("n", "gr", vim.lsp.buf.references, opts "Show references")
+  end,
+})
 
 local servers = {}
 
@@ -27,16 +27,10 @@ end
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    on_init = on_init,
-    capabilities = capabilities,
-    handlers = handlers,
-  }
+  vim.lsp.enable(lsp)
 end
 
 lspconfig["lua_ls"].setup {
-  handlers = handlers,
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,

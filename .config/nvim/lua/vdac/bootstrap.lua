@@ -30,6 +30,7 @@ M.lsp = {
   { name = "nil", cmd = "nil_ls" },
   { name = "typescript-language-server", cmd = "ts_ls", override = {} },
   { name = "json-lsp", cmd = "jsonls", override = {} },
+  { name = "postgrestools", cmd = "postgres_lsp"},
 }
 
 M.daps = {
@@ -46,7 +47,7 @@ M.fmts = {
   "prettierd",
   "beautysh",
   "fixjson",
-  "nixpkgs-fmt"
+  "nixpkgs-fmt",
 }
 
 M.linters = {

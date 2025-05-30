@@ -18,6 +18,7 @@ o.foldenable = false
 o.tabstop = 8
 o.shiftwidth = 8
 o.softtabstop = 8
+vim.g.omni_sql_no_default_maps = 1
 
 vim.filetype.add {
   filename = {

@@ -27,7 +27,7 @@ return {
 		-- See :h blink-cmp-config-keymap for defining your own keymap
 		keymap = {
 			["<C-space>"] = { "show", "show_documentation", "hide_documentation", "fallback" },
-			["<C-c>"] = { "cancel", "fallback" },
+			["<C-j>"] = { "cancel", "fallback" },
 			["<C-k>"] = false,
 			["<CR>"] = { "select_and_accept", "fallback" },
 

@@ -74,5 +74,3 @@ end
 local function document_symbol()
 	vim.lsp.buf.document_symbol { on_list = on_list }
 end
-
-vim.keymap.set("n", "<leader>lis", document_symbol, { desc = "document_symbol" })

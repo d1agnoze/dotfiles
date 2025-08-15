@@ -9,7 +9,7 @@ M.base46 = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
     Visual = { bg = "green", fg = "black" },
-    TelescopeSelection = { bg = "#32CD32", fg = "black" },
+    TelescopeSelection = { bg = "#045215", fg = "white" },
   },
   transparency = false,
   theme = "doomchad",

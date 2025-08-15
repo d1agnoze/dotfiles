@@ -33,7 +33,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 		map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 		map("<leader>ds", require("telescope.builtin").diagnostics, "Type [D]efinition")
-		map("<leader>lis", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 		map("<leader>fd", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 		map("<leader>ra", vim.lsp.buf.rename, "[R]e[n]ame")
 		map("<leader>fm", vim.lsp.buf.format, "Format code")
@@ -54,14 +53,6 @@ vim.diagnostic.config({
 		spacing = 2,
 	},
 })
-
-vim.lsp.enable("rust_analyzer")
-vim.lsp.enable("gopls")
-vim.lsp.enable("lua_ls")
-
-lspconfig.rust_analyzer.setup({ capabilities = capabilities })
-
-lspconfig.gopls.setup({ capabilities = capabilities })
 
 lspconfig.lua_ls.setup({
 	capabilities = capabilities,
@@ -84,4 +75,7 @@ lspconfig.lua_ls.setup({
 	},
 })
 
-vim.cmd("set completeopt+=noselect")
+vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("gopls")
+vim.lsp.enable("lua_ls")
+-- vim.cmd("set completeopt+=noselect")

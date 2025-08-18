@@ -66,3 +66,7 @@ map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
 -- terminal
 map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
+
+-- todo plugins
+map("n", "<leader>td", "<cmd>TodoTelescope keywords=TODO,FIX<cr>", { noremap = true, silent = true })
+map("n", "<leader>tf", "<cmd>TodoTelescope<cr>", { noremap = true, silent = true })

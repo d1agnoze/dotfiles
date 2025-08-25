@@ -13,7 +13,7 @@ local opt = {
 		HACK = { icon = "~", color = "important" },
 		WARN = { icon = "!", color = "warning", alt = { "WARNING", "XXX", "FIXME" } },
 		PERF = { icon = "*", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-		NOTE = { icon = "i", color = "hint", alt = { "INFO" } },
+		NOTE = { icon = "i", color = "hint"},
 		TEST = { icon = "T", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
 		IMPORTANT = { icon = "!!", color = "important", alt = { "IMP", "CAUTIOUS" } },
 		ERROR = { icon = "X", color = "pink", alt = { "ERR", "!!!" } },

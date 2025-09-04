@@ -12,10 +12,9 @@ local opt = {
     TODO = { icon = " ", color = "info" },
     HACK = { icon = " ", color = "important" },
     WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX", "FIXME" } },
-    PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
     NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
-    TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
-    IMPORTANT = { icon = "⚠ ", color = "important", alt = { "IMP", "CAUTIOUS" } },
+    TEST = { icon = "⏲ ", color = "test" },
+    IMPORTANT = { icon = "⚠ ", color = "important", alt = { "IMP", "CAUTIOUS", "Deprecated" } },
     ERROR = { icon = "😳", color = "pink", alt = { "ERR", "!!!" } },
   },
   gui_style = {
@@ -44,7 +43,7 @@ local opt = {
   colors = {
     error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
     warning = { "DiagnosticWarn", "WarningMsg", "#FBBF24" },
-    info = { "#4fab1a","DiagnosticInfo", "#2563EB" },
+    info = { "#4fab1a", "DiagnosticInfo", "#2563EB" },
     hint = { "#197278" },
     default = { "#7C3AED" },
     test = { "#D862BC" },

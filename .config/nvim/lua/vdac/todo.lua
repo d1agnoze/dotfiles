@@ -10,11 +10,10 @@ local opt = {
       -- signs = false, -- configure signs for some keywords individually
     },
     TODO = { icon = " ", color = "info" },
-    HACK = { icon = " ", color = "important" },
-    WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX", "FIXME" } },
-    NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+    WARN = { icon = " ", color = "warning" },
+    NOTE = { icon = " ", color = "hint" },
     TEST = { icon = "⏲ ", color = "test" },
-    IMPORTANT = { icon = "⚠ ", color = "important", alt = { "IMP", "CAUTIOUS", "Deprecated" } },
+    IMPORTANT = { icon = "⚠ ", color = "important", alt = { "Deprecated" } },
     ERROR = { icon = "😳", color = "pink", alt = { "ERR", "!!!" } },
   },
   gui_style = {

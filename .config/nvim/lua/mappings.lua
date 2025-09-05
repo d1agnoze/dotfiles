@@ -152,15 +152,20 @@ if vim.loop.os_uname().sysname == "Linux" or vim.loop.os_uname().sysname == "Uni
   })
 end
 
-map("n", "<leader>td", "<cmd>TodoTelescope keywords=TODO,FIX<cr>", { noremap = true, silent = true })
+map("n", "<leader>td", "<cmd>TodoTelescope keywords=TODO,FIX initial_mode=normal<cr>", { noremap = true })
 map(
   "n",
   "<leader>tf",
-  "<cmd>TodoTelescope keywords=HACK,WARN,TEST,IMPORTANT,ERROR,Deprecated<cr>",
+  "<cmd>TodoTelescope keywords=WARN,TEST,IMPORTANT,ERROR,Deprecated initial_mode=normal<cr>",
+  { noremap = true }
+)
+map(
+  "n",
+  "<leader>tn",
+  "<cmd>TodoTelescope keywords=NOTE,INFO initial_mode=normal<cr>",
   { noremap = true, silent = true }
 )
-map("n", "<leader>tn", "<cmd>TodoTelescope keywords=NOTE,INFO<cr>", { noremap = true, silent = true })
-map("n", "<leader>ta", "<cmd>TodoTelescope<cr>", { noremap = true, silent = true })
+map("n", "<leader>ta", "<cmd>TodoTelescope initial_mode=normal<cr>", { noremap = true, silent = true })
 map("n", "<leader>fc", function()
   require("telescope").extensions.dap.configurations {}
 end, { noremap = true, silent = true, desc = "DAP configurations" })

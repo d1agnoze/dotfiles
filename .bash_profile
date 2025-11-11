@@ -8,3 +8,4 @@ fi
 # run exports
 . "$HOME/dotfiles/.bash_env"
 . "$HOME/.cargo/env"
+. "/home/vdac/.local/share/bob/env/env.sh"

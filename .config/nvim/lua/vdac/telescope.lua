@@ -30,6 +30,7 @@ M.opts = {
 	extensions = {
 		frecency = { show_unindexed = true },
 		dap = { prompt_title = "[ Debugger ]" },
+		kulala = { initial_mode = "normal" },
 	},
 }
 

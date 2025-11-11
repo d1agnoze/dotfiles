@@ -20,17 +20,18 @@ M.lsp = {
   { name = "emmet-ls", cmd = "emmet_ls" },
   { name = "gopls", cmd = "gopls" },
   { name = "html-lsp", cmd = "html" },
-  { name = "html-lsp", cmd = "html" },
   { name = "lua-language-server", cmd = "lua_ls" },
-  { name = "svelte-language-server", cmd = "svelte" },
   { name = "tailwindcss-language-server", cmd = "tailwindcss" },
   { name = "docker-compose-language-service", cmd = "docker_compose_language_service" },
   { name = "dockerfile-language-server", cmd = "dockerls" },
   { name = "yaml-language-server", cmd = "yamlls" },
-  { name = "nil", cmd = "nil_ls" },
-  { name = "typescript-language-server", cmd = "ts_ls", override = {} },
+  { name = "typescript-language-server", cmd = "ts_ls" },
   { name = "json-lsp", cmd = "jsonls", override = {} },
-  { name = "postgrestools", cmd = "postgres_lsp"},
+  { name = "rust-analyzer", cmd = "rust_analyzer" },
+  { name = "vtsls", cmd = "vtsls" },
+  { name = "vue-language-server", cmd = "vue_ls" },
+  { name = "laravel-ls", cmd = "laravel_ls" },
+  { name = "intelephense", cmd = "intelephense" },
 }
 
 M.daps = {

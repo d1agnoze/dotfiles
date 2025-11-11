@@ -1,10 +1,10 @@
 -- EXAMPLE
 local map = vim.keymap.set
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require("nvchad.configs.lspconfig").capabilities
+-- local on_attach = require("nvchad.configs.lspconfig").on_attach
+-- local on_init = require("nvchad.configs.lspconfig").on_init
+-- local capabilities = require("nvchad.configs.lspconfig").capabilities
+-- local lspconfig = require "lspconfig"
 local init = require "vdac.bootstrap"
-local lspconfig = require "lspconfig"
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("my.lsp", {}),
@@ -25,15 +25,7 @@ for _, lsp in ipairs(init.lsp) do
   table.insert(servers, lsp.cmd)
 end
 
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  vim.lsp.enable(lsp)
-end
-
-lspconfig["lua_ls"].setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
+vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
       diagnostics = {
@@ -53,4 +45,38 @@ lspconfig["lua_ls"].setup {
       },
     },
   },
+})
+
+-- If you are using mason.nvim, you can get the ts_plugin_path like this
+-- For Mason v1,
+-- local mason_registry = require('mason-registry')
+-- local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
+-- For Mason v2,
+-- local vue_language_server_path = vim.fn.expand '$MASON/packages' .. '/vue-language-server' .. '/node_modules/@vue/language-server'
+-- or even
+-- local vue_language_server_path = "/path/to/@vue/language-server"
+local vue_language_server_path = vim.fn.stdpath "data"
+  .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+local vue_plugin = {
+  name = "@vue/typescript-plugin",
+  location = vue_language_server_path,
+  languages = { "vue" },
+  configNamespace = "typescript",
 }
+vim.lsp.config("vtsls", {
+  settings = {
+    vtsls = {
+      tsserver = {
+        globalPlugins = {
+          vue_plugin,
+        },
+      },
+    },
+  },
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+})
+
+-- lsps with default config
+for _, lsp in ipairs(servers) do
+  vim.lsp.enable(lsp)
+end

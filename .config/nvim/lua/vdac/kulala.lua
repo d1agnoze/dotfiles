@@ -14,4 +14,16 @@ M.global_keymaps = {
   ["Find request"] = false, -- set to false to disable
 }
 
+M.ui = {
+  display_mode = "float",
+  ---@type vim.api.keyset.win_config
+  win_opts = {
+    relative = "editor",
+    row = 5,
+    col = vim.o.columns,
+    width = 60,
+    style = "minimal",
+    -- height = 20,
+  },
+}
 return M

@@ -29,6 +29,12 @@ return {
 					},
 				},
 				sorting_strategy = "ascending",
+				mappings = {
+					n = {
+						["<C-c>"] = actions.close,
+						["q"] = actions.close,
+					},
+				},
 			},
 			pickers = {
 				oldfiles = { cwd_only = true },

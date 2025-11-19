@@ -1,6 +1,3 @@
-local lspconfig = require("lspconfig")
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
 --- Update status line
 vim.api.nvim_create_autocmd("LspProgress", {
 	callback = function()
@@ -32,7 +29,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
 		map("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 		map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-		map("<leader>ds", require("telescope.builtin").diagnostics, "Type [D]efinition")
+		map("<leader>lid", require("telescope.builtin").diagnostics, "Workspace [D]iagnostic")
 		map("<leader>fd", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 		map("<leader>ra", vim.lsp.buf.rename, "[R]e[n]ame")
 		map("<leader>fm", vim.lsp.buf.format, "Format code")
@@ -54,8 +51,42 @@ vim.diagnostic.config({
 	},
 })
 
-lspconfig.lua_ls.setup({
-	capabilities = capabilities,
+vim.lsp.config('lua_ls', {
+	on_init = function(client)
+		if client.workspace_folders then
+			local path = client.workspace_folders[1].name
+			if
+			    path ~= vim.fn.stdpath('config')
+			    and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+			then
+				return
+			end
+		end
+
+		client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most
+				-- likely LuaJIT in the case of Neovim)
+				version = 'LuaJIT',
+				-- Tell the language server how to find Lua modules same way as Neovim
+				-- (see `:h lua-module-load`)
+				path = {
+					'lua/?.lua',
+					'lua/?/init.lua',
+				},
+			},
+			workspace = {
+				checkThirdParty = false,
+				library = {
+					vim.env.VIMRUNTIME
+					-- Depending on the usage, you might want to add additional paths
+					-- here.
+					-- '${3rd}/luv/library'
+					-- '${3rd}/busted/library'
+				}
+			}
+		})
+	end,
 	settings = {
 		Lua = {
 			diagnostics = { globals = { "vim" } },
@@ -70,8 +101,8 @@ lspconfig.lua_ls.setup({
 				},
 				maxPreload = 100000,
 				preloadFileSize = 10000,
-			},
-		},
+			}
+		}
 	},
 })
 

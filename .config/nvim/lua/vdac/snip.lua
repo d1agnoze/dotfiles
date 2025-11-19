@@ -35,7 +35,7 @@ local sfc = s(
   )
 )
 local ffc = s(
-  { trig = "ffc", dscr = "Stateful fucntional component" },
+  { trig = "ffc", dscr = "Stateful functional component" },
   fmta(
     [[
                 export default <> function <> (<>){
@@ -51,7 +51,7 @@ local tryc = s(
     [[
     try {
       <>
-    }catch (err: any){}
+    }catch (err){}
               ]],
     { i(1, "") }
   )

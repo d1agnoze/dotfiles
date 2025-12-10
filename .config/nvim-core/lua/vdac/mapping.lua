@@ -56,7 +56,7 @@ end, { desc = "Toggle tabstop between 8 and 4" })
 map("n", "<leader>fr", "<cmd>Telescope registers<CR>", { noremap = true, silent = true, desc = "Telescope registers" })
 map("n", "<Tab>", ":bnext<CR>", { noremap = true, silent = true, desc = "Buffer next" })
 map("n", "<S-Tab>", ":bprevious<CR>", { noremap = true, silent = true, desc = "Buffer previous" })
-map("n", "<leader>x", ":bd<CR>", { noremap = true, silent = true, desc = "Quit Buffer" })
+map("n", "<leader>x", "<Cmd>BufferClose<CR>", { noremap = true, silent = true, desc = "Quit Buffer" })
 map("n", "<leader>lx", ":luafile %<CR>", { noremap = true, silent = true, desc = "Execute current lua file" })
 map("n", "<C-m>", "<cmd>TSToggle highlight<CR>", { desc = "[Treesitter] toggle syntax highlghting", noremap = true })
 

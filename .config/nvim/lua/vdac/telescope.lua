@@ -1,37 +1,43 @@
 local action = require "telescope.actions"
 local M = {}
 M.deps = {
-	"nvim-treesitter/nvim-treesitter",
-	"nvim-telescope/telescope-dap.nvim",
-	"nvim-telescope/telescope-frecency.nvim",
+  "nvim-treesitter/nvim-treesitter",
+  "nvim-telescope/telescope-dap.nvim",
+  "nvim-telescope/telescope-frecency.nvim",
+  "nvim-telescope/telescope-ui-select.nvim",
 }
 M.opts = {
-	pickers = {
-		oldfiles = {
-			cwd_only = true,
-		},
-		buffers = {
-			initial_mode = "normal",
-			mappings = {
-				i = {
-					["<esc>"] = action.close,
-				},
-				n = {
-					["dd"] = action.delete_buffer + action.move_to_top,
-				},
-			},
-		},
-		registers = {
-			initial_mode = "normal",
-			previewer = true,
-		},
-	},
-	extensions_list = { "dap", "frecency" },
-	extensions = {
-		frecency = { show_unindexed = true },
-		dap = { prompt_title = "[ Debugger ]" },
-		kulala = { initial_mode = "normal" },
-	},
+  pickers = {
+    oldfiles = {
+      cwd_only = true,
+    },
+    buffers = {
+      initial_mode = "normal",
+      mappings = {
+        i = {
+          ["<esc>"] = action.close,
+        },
+        n = {
+          ["dd"] = action.delete_buffer + action.move_to_top,
+        },
+      },
+    },
+    registers = {
+      initial_mode = "normal",
+      previewer = true,
+    },
+  },
+  extensions_list = { "dap", "frecency" },
+  extensions = {
+    frecency = { show_unindexed = true },
+    dap = { prompt_title = "[ Debugger ]" },
+    kulala = { initial_mode = "normal" },
+    ["ui-select"] = {
+      function()
+        require("telescope.themes").get_dropdown {}
+      end,
+    },
+  },
 }
 
 return M

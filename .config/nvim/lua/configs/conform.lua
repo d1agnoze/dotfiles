@@ -14,6 +14,7 @@ local options = {
     bash = { "beautysh" },
     nix = { "nixpkgs-fmt" },
     sql = { "pg_format" },
+    vue = { "prettierd" },
   },
 }
 

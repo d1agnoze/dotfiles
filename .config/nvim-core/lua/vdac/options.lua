@@ -34,5 +34,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "qf" },
 	callback = function()
 		vim.keymap.set("n", "<CR>", "<CR>")
-	end
+	end,
 })
+
+vim.api.nvim_set_hl(0, "Visual", { bg = "#1d600f" })

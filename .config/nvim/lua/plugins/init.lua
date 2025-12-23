@@ -41,7 +41,6 @@ return {
     "hrsh7th/nvim-cmp",
     opts = function()
       local M = require "nvchad.configs.cmp"
-      -- table.insert(M.sources, { name = "codeium" })
       table.insert(M.sources, { name = "copilot" })
     end,
   },

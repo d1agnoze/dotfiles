@@ -8,11 +8,11 @@ M.base46 = {
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
-    Visual = { bg = "green", fg = "black" },
+    Visual = { bg = "#1d600f"},
     TelescopeSelection = { bg = "#045215", fg = "white" },
   },
   transparency = false,
-  theme = "doomchad",
+  theme = "ayu_dark",
 }
 M.nvdash = {
   load_on_startup = true,

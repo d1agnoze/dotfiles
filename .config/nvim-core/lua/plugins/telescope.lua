@@ -14,7 +14,7 @@ local lsp_filter = {
 return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.8",
-	dependencies = { "nvim-lua/plenary.nvim" },
+	dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-ui-select.nvim" },
 	config = function()
 		local actions = require("telescope.actions")
 		require("telescope").setup({
@@ -64,6 +64,15 @@ return {
 				},
 				registers = { initial_mode = "normal", previewer = true },
 			},
+			extensions = {
+				["ui-select"] = {
+					require("telescope.themes").get_dropdown({
+						initial_mode = "normal",
+					}),
+				},
+			},
 		})
+
+		require("telescope").load_extension("ui-select")
 	end,
 }

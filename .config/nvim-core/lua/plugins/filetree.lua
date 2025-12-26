@@ -11,13 +11,13 @@ return {
 		renderer = {
 			icons = {
 				glyphs = {
-					default = "-",
+					default = "",
 					symlink = "~",
 					bookmark = "*",
 					modified = "+",
 					hidden = ".",
 					folder = {
-						arrow_closed = ">",
+						arrow_closed = "",
 						arrow_open = "",
 						default = "[+]",
 						open = "[-]",

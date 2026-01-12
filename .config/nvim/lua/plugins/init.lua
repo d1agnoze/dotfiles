@@ -137,7 +137,7 @@ return {
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown" },
+    ft = { "markdown", "codecompanion" },
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
     opts = {
       overrides = {
@@ -223,6 +223,53 @@ return {
           panel = { enabled = false, auto_refresh = false },
         }
       end,
+    },
+  },
+  -- Lazy.nvim
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      {
+        "ravitemer/mcphub.nvim",
+        event = "BufRead",
+        build = "npm install -g mcp-hub@latest",
+        config = function()
+          require("mcphub").setup {}
+        end,
+      },
+    },
+    event = "BufRead",
+    keys = {
+      { "<leader>cp", "<cmd>CodeCompanionChat Toggle<CR>" },
+      { "<leader>cr", "<cmd>CodeCompanionActions<CR>", mode = { "n", "v" }, desc = "CodeCompanion: Actions" },
+    },
+    opts = {
+      interactions = {
+        chat = {
+          adapter = "opencode",
+          keymaps = {
+            send = {
+              modes = { n = "<C-s>", i = "<C-s>" },
+              opts = {},
+            },
+            close = {
+              modes = { n = "<Esc>", i = "<C-x>" },
+              opts = {},
+            },
+            -- Add further custom keymaps here
+          },
+        },
+      },
+      extensions = {
+        mcphub = {
+          callback = "mcphub.extensions.codecompanion",
+          opts = {
+            make_vars = true,
+            make_slash_commands = true,
+            show_result_in_chat = true,
+          },
+        },
+      },
     },
   },
 }

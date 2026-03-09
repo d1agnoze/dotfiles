@@ -25,7 +25,7 @@ M.lsp = {
   { name = "docker-compose-language-service", cmd = "docker_compose_language_service" },
   { name = "dockerfile-language-server", cmd = "dockerls" },
   { name = "yaml-language-server", cmd = "yamlls" },
-  { name = "typescript-language-server", cmd = "ts_ls" },
+  -- { name = "typescript-language-server", cmd = "ts_ls" },
   { name = "json-lsp", cmd = "jsonls", override = {} },
   { name = "rust-analyzer", cmd = "rust_analyzer" },
   { name = "vtsls", cmd = "vtsls" },

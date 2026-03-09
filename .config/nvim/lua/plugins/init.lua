@@ -246,7 +246,7 @@ return {
     opts = {
       interactions = {
         chat = {
-          adapter = "opencode",
+          adapter = "copilot",
           keymaps = {
             send = {
               modes = { n = "<C-s>", i = "<C-s>" },
@@ -260,16 +260,16 @@ return {
           },
         },
       },
-      extensions = {
-        mcphub = {
-          callback = "mcphub.extensions.codecompanion",
-          opts = {
-            make_vars = true,
-            make_slash_commands = true,
-            show_result_in_chat = true,
-          },
-        },
-      },
+      -- extensions = {
+      --   mcphub = {
+      --     callback = "mcphub.extensions.codecompanion",
+      --     opts = {
+      --       make_vars = true,
+      --       make_slash_commands = true,
+      --       show_result_in_chat = true,
+      --     },
+      --   },
+      -- },
     },
   },
 }

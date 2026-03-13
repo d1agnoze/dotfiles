@@ -225,6 +225,19 @@ return {
       end,
     },
   },
+  {
+    {
+      "CopilotC-Nvim/CopilotChat.nvim",
+      dependencies = {
+        { "nvim-lua/plenary.nvim", branch = "master" },
+      },
+      build = "make tiktoken",
+      opts = {},
+      keys = {
+        { "<leader>cc", "<cmd>CopilotChatToggle<CR>", "n", desc = "CopilotChat Toggle" },
+      },
+    },
+  },
   -- Lazy.nvim
   {
     "olimorris/codecompanion.nvim",
@@ -244,9 +257,14 @@ return {
       { "<leader>cr", "<cmd>CodeCompanionActions<CR>", mode = { "n", "v" }, desc = "CodeCompanion: Actions" },
     },
     opts = {
+      display = {
+        chat = {
+          auto_scroll = false,
+        },
+      },
       interactions = {
         chat = {
-          adapter = "copilot",
+          adapter = "opencode",
           keymaps = {
             send = {
               modes = { n = "<C-s>", i = "<C-s>" },

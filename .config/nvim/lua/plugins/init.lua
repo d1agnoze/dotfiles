@@ -259,12 +259,19 @@ return {
     opts = {
       display = {
         chat = {
-          auto_scroll = false,
+          auto_scroll = true,
+        },
+        diff = {
+          enabled = true,
+          word_highlights = {
+            additions = true,
+            deletions = true,
+          },
         },
       },
       interactions = {
         chat = {
-          adapter = "opencode",
+          adapter = "copilot_acp",
           keymaps = {
             send = {
               modes = { n = "<C-s>", i = "<C-s>" },
@@ -274,7 +281,6 @@ return {
               modes = { n = "<Esc>", i = "<C-x>" },
               opts = {},
             },
-            -- Add further custom keymaps here
           },
         },
       },

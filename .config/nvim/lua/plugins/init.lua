@@ -225,75 +225,12 @@ return {
       end,
     },
   },
-  {
-    {
-      "CopilotC-Nvim/CopilotChat.nvim",
-      dependencies = {
-        { "nvim-lua/plenary.nvim", branch = "master" },
-      },
-      build = "make tiktoken",
-      opts = {},
-      keys = {
-        { "<leader>cc", "<cmd>CopilotChatToggle<CR>", "n", desc = "CopilotChat Toggle" },
-      },
-    },
-  },
   -- Lazy.nvim
   {
     "olimorris/codecompanion.nvim",
-    dependencies = {
-      {
-        "ravitemer/mcphub.nvim",
-        event = "BufRead",
-        build = "npm install -g mcp-hub@latest",
-        config = function()
-          require("mcphub").setup {}
-        end,
-      },
-    },
+    dependencies = require("configs.codecompanion").deps,
     event = "BufRead",
-    keys = {
-      { "<leader>cp", "<cmd>CodeCompanionChat Toggle<CR>" },
-      { "<leader>cr", "<cmd>CodeCompanionActions<CR>", mode = { "n", "v" }, desc = "CodeCompanion: Actions" },
-    },
-    opts = {
-      display = {
-        chat = {
-          auto_scroll = true,
-        },
-        diff = {
-          enabled = true,
-          word_highlights = {
-            additions = true,
-            deletions = true,
-          },
-        },
-      },
-      interactions = {
-        chat = {
-          adapter = "copilot_acp",
-          keymaps = {
-            send = {
-              modes = { n = "<C-s>", i = "<C-s>" },
-              opts = {},
-            },
-            close = {
-              modes = { n = "<Esc>", i = "<C-x>" },
-              opts = {},
-            },
-          },
-        },
-      },
-      -- extensions = {
-      --   mcphub = {
-      --     callback = "mcphub.extensions.codecompanion",
-      --     opts = {
-      --       make_vars = true,
-      --       make_slash_commands = true,
-      --       show_result_in_chat = true,
-      --     },
-      --   },
-      -- },
-    },
+    keys = require("configs.codecompanion").keys,
+    config = require("configs.codecompanion").config,
   },
 }

@@ -12,7 +12,7 @@ M.base46 = {
     TelescopeSelection = { bg = "#045215", fg = "white" },
   },
   transparency = false,
-  theme = "nightfox",
+  theme = "everblush",
 }
 M.nvdash = {
   load_on_startup = true,

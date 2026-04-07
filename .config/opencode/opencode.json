@@ -1,0 +1,7 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "github-copilot/claude-sonnet-4.6",
+  "autoupdate": true,
+  "instructions": [".github/*.md", ".github/instructions/*.md"],
+  "plugin": ["@slkiser/opencode-quota"]
+}

@@ -38,3 +38,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_set_hl(0, "Visual", { bg = "#1d600f" })
+
+-- New UI opt-in
+require('vim._core.ui2').enable({})

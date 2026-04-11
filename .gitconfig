@@ -62,3 +62,5 @@
     cmd = code --wait --diff $LOCAL $REMOTE
 # Comment: End of "Extra Block"
 
+[pager]
+	diff = diffnav

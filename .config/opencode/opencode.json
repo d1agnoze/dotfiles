@@ -3,5 +3,19 @@
   "model": "github-copilot/claude-sonnet-4.6",
   "autoupdate": true,
   "instructions": [".github/*.md", ".github/instructions/*.md"],
-  "plugin": ["@slkiser/opencode-quota"]
+  "plugin": ["@slkiser/opencode-quota", "@mohak34/opencode-notifier"],
+  "mcp": {
+    "tmux": {
+      "type": "local",
+      "command": ["npx", "-y", "tmux-mcp"],
+      "enabled": false
+    },
+    "github": {
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer {file:~/.config/opencode/github_token}"
+      }
+    }
+  }
 }

@@ -15,7 +15,13 @@
       "url": "https://api.githubcopilot.com/mcp/",
       "headers": {
         "Authorization": "Bearer {file:~/.config/opencode/github_token}"
-      }
+      },
+      "enabled": false
+    },
+    "jam": {
+      "type": "remote",
+      "url": "https://mcp.jam.dev/mcp",
+      "enabled": false
     }
   }
 }

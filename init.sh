@@ -1,5 +1,14 @@
-sudo chmod -R 777 ~/dotfiles/install_scripts
-orginal_PS3="$PS3"
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$SCRIPT_DIR"
+
+# shellcheck source=install_scripts/common.sh
+source "$REPO_ROOT/install_scripts/common.sh"
+
+original_PS3="${PS3-}"
 
 # Acsii color code
 #34:blue
@@ -9,20 +18,20 @@ orginal_PS3="$PS3"
 
 echo -e "\e[0;34mInstall options:\e[0m"
 PS3=$'\e[0;33mPlease select one of the options: \e[0m'
-select choice in "symlink only" "Full system install" "Install Extras(Fedora Only)" "Exit the script"; do
+select choice in "Symlink only" "Full system install (Fedora only)" "Install extras (Fedora only)" "Exit the script"; do
     case $choice in
-        "symlink only")
-            source ~/dotfiles/install_scripts/symlink.sh
+        "Symlink only")
+            source "$REPO_ROOT/install_scripts/symlink.sh"
             break
             ;;
-        "Full system install")
+        "Full system install (Fedora only)")
             echo -e "\e[0;32mRunning scripts to install dependencies...\e[0m"
-            source ~/dotfiles/install_scripts/deb.sh
-            source ~/dotfiles/install_scripts/symlink.sh
+            source "$REPO_ROOT/install_scripts/deb.sh"
+            source "$REPO_ROOT/install_scripts/symlink.sh"
             break
             ;;
-        "Install Extras(Fedora Only)")
-            source ~/dotfiles/install_scripts/extras.sh
+        "Install extras (Fedora only)")
+            source "$REPO_ROOT/install_scripts/extras.sh"
             break
             ;;
         "Exit the script")
@@ -34,4 +43,4 @@ select choice in "symlink only" "Full system install" "Install Extras(Fedora Onl
     esac
 done
 
-PS3="$orginal_PS3"
+PS3="$original_PS3"

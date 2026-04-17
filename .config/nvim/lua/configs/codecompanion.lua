@@ -1,14 +1,4 @@
 local M = {
-  deps = {
-    {
-      "ravitemer/mcphub.nvim",
-      event = "BufRead",
-      build = "npm install -g mcp-hub@latest",
-      config = function()
-        require("mcphub").setup {}
-      end,
-    },
-  },
   keys = {
     { "<leader>cp", "<cmd>CodeCompanionChat Toggle<CR>" },
     { "<leader>cr", "<cmd>CodeCompanionActions<CR>", mode = { "n", "v" }, desc = "CodeCompanion: Actions" },

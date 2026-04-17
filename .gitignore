@@ -3,5 +3,5 @@ dlv/
 gh/
 wslu/
 github_token
-opencode_notifier_state.json
+opencode*notifier*state.json
 tmux*.log

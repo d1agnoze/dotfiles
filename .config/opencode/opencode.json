@@ -1,8 +1,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "github-copilot/claude-sonnet-4.6",
+  "model": "openai/gpt-5.4",
   "autoupdate": true,
-  "instructions": [".github/*.md", ".github/instructions/*.md"],
+  "instructions": [".config/opencode/*.md", ".config/opencode/instructions/*.md"],
   "plugin": ["@slkiser/opencode-quota", "@mohak34/opencode-notifier"],
   "mcp": {
     "tmux": {

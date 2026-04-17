@@ -124,3 +124,7 @@ esac
 # pnpm end
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# opencode
+export PATH=/home/vdac/.opencode/bin:$PATH
+. "/home/vdac/.local/share/bob/env/env.sh"

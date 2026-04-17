@@ -16,5 +16,6 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 # run exports
+export PATH=$PATH:/usr/local/go/bin
 . "$HOME/dotfiles/.bash_env"
 . "$HOME/.cargo/env"

@@ -3,7 +3,7 @@
   "model": "openai/gpt-5.4",
   "autoupdate": true,
   "instructions": [".config/opencode/*.md", ".config/opencode/instructions/*.md"],
-  "plugin": ["@slkiser/opencode-quota", "@mohak34/opencode-notifier", "opencode-mem"],
+  "plugin": ["@slkiser/opencode-quota", "@mohak34/opencode-notifier"],
   "mcp": {
     "tmux": {
       "type": "local",

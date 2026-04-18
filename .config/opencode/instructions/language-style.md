@@ -35,6 +35,7 @@ Do not force one-line formatting when the expression becomes hard to scan.
 - Prefer table-driven tests.
 - Prefer small functions.
 - Prefer `slog` over `log`, unless the project is very small and log levels are not needed.
+- Do not wrap logging lines. Keep `log` and `slog` calls on a single line even when the message or arguments are long, so the main logic stays easier to scan.
 - Prefer concise one-line forms when they remain readable.
 - Prefer short `if` statements with an initializer when the initialized value is only used by that condition.
 
@@ -48,6 +49,10 @@ if v := math.Pow(x, n); v < lim {
 
 ```go
 utils.MaxFunc(arr, func(x model.Order) string { return x.ID })
+```
+
+```go
+slog.InfoContext(app.Context, "Very long system message: Lorem ipsum dolor sit amet, consectetur adipiscing", "error", err, "data", data)
 ```
 
 For struct literals:

@@ -25,13 +25,30 @@ backup_path() {
     fi
 
     mv "$target" "$BACKUP_ROOT/$name"
-  fi
+	fi
+}
+
+cleanup_legacy_copilot_link() {
+	local target="$HOME_DIR/.copilot/AGENTS.md"
+
+	if [ ! -e "$target" ] && [ ! -L "$target" ]; then
+		return
+	fi
+
+	if [ -L "$target" ]; then
+		echo -e "\e[1;93mRemoving legacy Copilot symlink $target\e[0m"
+		rm "$target"
+		return
+	fi
+
+	backup_path "$target"
 }
 
 ensure_command stow
 ensure_command git
 
 echo -e "\e[1;94mPreparing existing dotfiles for stow\e[0m"
+cleanup_legacy_copilot_link
 backup_path "$HOME_DIR/.tmux"
 backup_path "$HOME_DIR/.tmux.conf"
 backup_path "$HOME_DIR/.gitconfig"

@@ -60,6 +60,11 @@ If you are using a distro that is not supported by the scripts, install the equi
 - `nvim` uses `.config/nvim/`
 - `vim` is aliased to `NVIM_APPNAME=nvim-core nvim`, which uses `.config/nvim-core/`
 
+## Shared AI Agent Config
+- Shared personalization for AI tools lives in `.config/agents/`.
+- `.config/opencode/`, `.copilot/`, and `.codex/` point at that shared content with symlinks, so style guides and skills only need to be maintained once.
+- Keep tool-specific config files in their native folders, such as `.config/opencode/opencode.json`.
+
 ## Notes
 - This repo is meant to be stowed into `$HOME`.
 - Some shell and app configs still contain machine-specific paths and optional tool assumptions.

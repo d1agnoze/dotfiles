@@ -49,7 +49,6 @@ ensure_command git
 
 echo -e "\e[1;94mPreparing existing dotfiles for stow\e[0m"
 cleanup_legacy_copilot_link
-backup_path "$HOME_DIR/.tmux"
 backup_path "$HOME_DIR/.tmux.conf"
 backup_path "$HOME_DIR/.gitconfig"
 backup_path "$HOME_DIR/.bashrc"

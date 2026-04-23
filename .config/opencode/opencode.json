@@ -15,9 +15,7 @@
         "--listen",
         "127.0.0.1:46321",
         "--history-lines",
-        "500",
-        "--log-file",
-        "tmuxmcpd.log"
+        "500"
       ],
       "enabled": true
     },

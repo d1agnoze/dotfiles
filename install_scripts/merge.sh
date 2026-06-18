@@ -22,8 +22,8 @@ if [ "$CURRENT_BRANCH" = "dev" ]; then
 fi
 
 git fetch origin
-echo "🤖 Generating PR message using OpenCode CLI (Nemotron 3 Ultra)..."
-PR_MESSAGE=$(opencode run -m "openrouter/nvidia/nemotron-3-ultra-550b-a55b" --format json "Write a pull request body in plain text for merging branch '$CURRENT_BRANCH' into 'dev'. Base it on the git commits and diff between '$CURRENT_BRANCH' and 'origin/dev'. Return only the PR body with a short summary and bullet points for the most important changes." | jq -r '.content // .text // .message // .')
+echo "🤖 Generating PR message using OpenCode CLI (big pickle)..."
+PR_MESSAGE=$(opencode run -m "opencode/big-pickle" --format json "Write a pull request body in plain text for merging branch '$CURRENT_BRANCH' into 'dev'. Base it on the git commits and diff between '$CURRENT_BRANCH' and 'origin/dev'. Return only the PR body with a short summary and bullet points for the most important changes." | jq -r '.content // .text // .message // .')
 
 # Create PR to 'dev' with generated message using gh CLI
 PR_URL=$(gh pr create --base dev --title "Auto PR: $CURRENT_BRANCH" --body "$PR_MESSAGE")

@@ -4,7 +4,7 @@ This folder contains shared agent instructions for OpenCode and other agents tha
 
 ## Shared Style Guides
 
-- `opencode-style.md` contains the global coding style defaults.
+- `coding-style.md` contains the global coding style defaults.
 - `instructions/language-style.md` contains JavaScript, TypeScript, and Go-specific style rules.
 
 ## Usage

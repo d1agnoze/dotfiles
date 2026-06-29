@@ -1,4 +1,4 @@
-# OpenCode Global Coding Style
+# Global Coding Style
 
 Apply these defaults unless the target project already defines a formatter, linter, or established local convention. When a project has explicit formatting or style rules, follow the project first.
 

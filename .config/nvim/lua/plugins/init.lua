@@ -146,7 +146,7 @@ return {
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown", "codecompanion" },
+    ft = { "markdown" },
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
     opts = {
       overrides = {
@@ -242,11 +242,6 @@ return {
     end,
   },
   -- Lazy.nvim
-  {
-    "olimorris/codecompanion.nvim",
-    dependencies = require("configs.codecompanion").deps,
-    event = "BufRead",
-    keys = require("configs.codecompanion").keys,
-    config = require("configs.codecompanion").config,
-  },
+  require "configs.opencode",
+  require "configs.claude",
 }

@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "tmux": {
+      "type": "stdio",
+      "command": "tmuxmcpd",
+      "args": ["--listen", "127.0.0.1:46321", "--history-lines", "500"]
+    }
+  }
+}

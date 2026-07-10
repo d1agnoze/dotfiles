@@ -3,7 +3,19 @@
     "tmux": {
       "type": "stdio",
       "command": "tmuxmcpd",
-      "args": ["--listen", "127.0.0.1:46321", "--history-lines", "500"]
+      "args": [
+        "--listen",
+        "127.0.0.1:46321",
+        "--history-lines",
+        "500"
+      ]
     }
-  }
+  },
+  "firstStartTime": "2026-07-09T07:00:28.464Z",
+  "machineID": "d65c76a441d9ab91c5a7d5b7680f234537a7febc4d5d3123a1ca15ef260eccad",
+  "opusProMigrationComplete": true,
+  "sonnet1m45MigrationComplete": true,
+  "seenNotifications": {},
+  "migrationVersion": 13,
+  "userID": "64c4e2d7d383340245c5347a7bd3962c2330fac947175585823d25ef807c2cc2"
 }

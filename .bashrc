@@ -128,3 +128,5 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # opencode
 export PATH=/home/vdac/.opencode/bin:$PATH
 . "/home/vdac/.local/share/bob/env/env.sh"
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init bash)"; fi

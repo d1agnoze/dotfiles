@@ -1,0 +1,4 @@
+interface:
+  display_name: "EWC Workspaces"
+  short_description: "Manage multi-repository EWC workspaces"
+  default_prompt: "Use $ewc-workspaces to safely manage this multi-repository workspace."

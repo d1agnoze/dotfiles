@@ -1,6 +1,5 @@
-return {
-	"williamboman/mason.nvim",
-	opts = {
+return function()
+	require("mason").setup({
 		ui = {
 			icons = {
 				package_installed = "[✔]",   -- Installed
@@ -8,5 +7,5 @@ return {
 				package_uninstalled = "[X]", -- Uninstalled
 			},
 		},
-	},
-}
+	})
+end

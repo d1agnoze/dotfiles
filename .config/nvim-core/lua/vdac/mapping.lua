@@ -33,10 +33,12 @@ map(
 )
 
 map("n", "<leader>cl", "_vg_", { noremap = true, desc = "select line" })
---Command to open Mason, Lsp, Conform, Lazy
+-- Command to open Mason, LSP, and plugin updates
 map("n", "<leader>sm", ":Mason<CR>", { desc = "Open Mason", silent = true })
-map("n", "<leader>ss", ":LspInfo<CR>", { desc = "Open LspInfo", silent = true })
-map("n", "<leader>sl", ":Lazy<CR>", { desc = "Open Lazy", silent = true })
+map("n", "<leader>ss", function()
+	vim.cmd("checkhealth vim.lsp")
+end, { desc = "Open LSP health" })
+map("n", "<leader>sl", vim.pack.update, { desc = "Update plugins" })
 map("n", "<leader>fk", "<CMD>:Telescope keymaps<CR>", { desc = "Telescope keymaps", silent = true })
 map("n", "<leader>ts", function()
 	local current_tabstop = vim.o.tabstop
@@ -56,7 +58,7 @@ end, { desc = "Toggle tabstop between 8 and 4" })
 map("n", "<leader>fr", "<cmd>Telescope registers<CR>", { noremap = true, silent = true, desc = "Telescope registers" })
 map("n", "<Tab>", ":bnext<CR>", { noremap = true, silent = true, desc = "Buffer next" })
 map("n", "<S-Tab>", ":bprevious<CR>", { noremap = true, silent = true, desc = "Buffer previous" })
-map("n", "<leader>x", "<Cmd>BufferClose<CR>", { noremap = true, silent = true, desc = "Quit Buffer" })
+map("n", "<leader>x", "<Cmd>bdelete<CR>", { noremap = true, silent = true, desc = "Quit Buffer" })
 map("n", "<leader>lx", ":luafile %<CR>", { noremap = true, silent = true, desc = "Execute current lua file" })
 
 -- Comment

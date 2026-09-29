@@ -33,9 +33,12 @@ Two separate configs coexist:
 ### Shared AI Agent Config
 
 `.config/agents/` is the single source of truth for agent instructions:
-- `coding-style.md` — global formatting defaults (tabs, minimal changes, readability over compactness).
-- `instructions/language-style.md` — JS/TS/Go-specific rules.
+- `AGENTS.md` — PR conventions and general coding guidelines. Loaded on every turn, so it stays thin.
+- `instructions/` — per-language style rules, loaded only when the work touches that language.
 - `skills/` — shared agent skills.
+
+The style guides were cleared on 2026-09-18 and are being rewritten from scratch; `instructions/` is
+empty until that lands. Until then there is no checked-in style guidance for any language.
 
 `.config/opencode/`, `.copilot/`, and `.codex/` symlink into `.config/agents/` so style guides and skills only need to be maintained once. Keep tool-specific config files (e.g. `.config/opencode/opencode.json`) in their native folders.
 
@@ -51,10 +54,8 @@ Scripts derive `REPO_ROOT` from their own location; never assume `~/dotfiles`.
 
 ## Coding Style
 
-From `.config/agents/coding-style.md`:
-- Tabs for indentation by default.
-- Minimal, local changes — don't touch adjacent code unless necessary.
-- Match existing project style when it conflicts with these defaults.
+No style guide is checked in right now — see the note under *Shared AI Agent Config*. Match the
+surrounding file until `instructions/` is repopulated.
 
 ## Notes
 

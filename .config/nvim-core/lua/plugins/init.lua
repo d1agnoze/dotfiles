@@ -1,5 +1,20 @@
+local plugins = {
+	"filetree",
+	"gitsign",
+	"indent_line",
+	"lemons_theme",
+	"mason",
+	"telescope",
+	"todo",
+	"treesitter",
+}
+
 return {
-	"neovim/nvim-lspconfig",
-	"tpope/vim-surround",
-	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true },
+	setup = function()
+		require("nvim-autopairs").setup({})
+
+		for _, plugin in ipairs(plugins) do
+			require("plugins." .. plugin)()
+		end
+	end,
 }

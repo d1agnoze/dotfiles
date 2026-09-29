@@ -8,10 +8,10 @@ vim.api.nvim_create_autocmd("LspProgress", {
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 	callback = function(event)
-		-- local client = vim.lsp.get_client_by_id(event.data.client_id)
-		-- if client and client:supports_method("textDocument/completion") then
-		-- 	vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
-		-- end
+		local client = vim.lsp.get_client_by_id(event.data.client_id)
+		if client and client:supports_method("textDocument/completion") then
+			vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
+		end
 
 		local map = function(keys, func, desc, mode)
 			mode = mode or "n"
@@ -36,6 +36,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 		map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 		map("sh", vim.lsp.buf.signature_help, "Lsp function [S]ignature [H]elp")
+
+		vim.keymap.set("i", "<C-Space>", vim.lsp.completion.get, { buffer = event.buf, desc = "LSP: Trigger completion" })
+		vim.keymap.set("i", "<C-j>", "<C-e>", { buffer = event.buf, desc = "LSP: Cancel completion" })
+		vim.keymap.set("i", "<CR>", function()
+			return vim.fn.pumvisible() == 1 and "<C-y>" or "<CR>"
+		end, { buffer = event.buf, desc = "LSP: Confirm completion", expr = true })
+		vim.keymap.set("i", "<Tab>", function()
+			return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
+		end, { buffer = event.buf, desc = "LSP: Next completion", expr = true })
+		vim.keymap.set("i", "<S-Tab>", function()
+			return vim.fn.pumvisible() == 1 and "<C-p>" or "<S-Tab>"
+		end, { buffer = event.buf, desc = "LSP: Previous completion", expr = true })
 	end,
 })
 
@@ -50,6 +62,8 @@ vim.diagnostic.config({
 		spacing = 2,
 	},
 })
+
+vim.opt.completeopt = { "menuone", "noselect", "popup" }
 
 vim.lsp.config('lua_ls', {
 	on_init = function(client)
@@ -95,8 +109,6 @@ vim.lsp.config('lua_ls', {
 				library = {
 					vim.fn.expand("$VIMRUNTIME/lua"),
 					vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
-					vim.fn.stdpath("data") .. "/lazy/ui/nvchad_types",
-					vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy",
 					"${3rd}/luv/library",
 				},
 				maxPreload = 100000,

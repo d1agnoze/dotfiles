@@ -1,6 +1,5 @@
-return {
-	"lewis6991/gitsigns.nvim",
-	opts = {
+return function()
+	require("gitsigns").setup({
 		on_attach = function(bufnr)
 			local gs = package.loaded.gitsigns
 			local function opts(desc)
@@ -11,5 +10,5 @@ return {
 			map("n", "<leader>hd", gs.diffthis, opts "Git diff")
 			map("n", "<leader>gb", gs.blame_line, opts "Blame Line")
 		end,
-	},
-}
+	})
+end

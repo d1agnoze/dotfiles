@@ -1,7 +1,6 @@
 vim.g.mapleader = " "
 
-require("config.lazy")
+require("config.pack")
 require('vdac')
 
 -- vim.notify_once("Welcome!", 2)
-

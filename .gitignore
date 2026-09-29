@@ -5,3 +5,4 @@ wslu/
 github_token
 opencode*notifier*state.json
 tmux*.log
+.config/agents/skills/synced/

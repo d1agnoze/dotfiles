@@ -66,8 +66,6 @@ local opt = {
 	},
 }
 
-return {
-	"folke/todo-comments.nvim",
-	dependencies = { "nvim-lua/plenary.nvim" },
-	opts = opt,
-}
+return function()
+	require("todo-comments").setup(opt)
+end

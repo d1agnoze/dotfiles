@@ -34,8 +34,28 @@ function Statusline()
 	return table.concat(parts)
 end
 
+function Tabline()
+	local parts = {}
+
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.fn.buflisted(buf) == 1 then
+			local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":t")
+			if name == "" then name = "[No Name]" end
+			if vim.bo[buf].modified then name = name .. " +" end
+			name = name:gsub("%%", "%%%%")
+
+			local highlight = buf == vim.api.nvim_get_current_buf() and "TabLineSel" or "TabLine"
+			table.insert(parts, "%#" .. highlight .. "# " .. name .. " ")
+		end
+	end
+
+	return table.concat(parts) .. "%#TabLineFill#"
+end
+
 -- Set the statusline
 vim.o.statusline = '%!v:lua.Statusline()'
+vim.o.tabline = "%!v:lua.Tabline()"
+vim.o.showtabline = 2
 --
 -- -- Optional: Update statusline when switching buffers
 -- vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {

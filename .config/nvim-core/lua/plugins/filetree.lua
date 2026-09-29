@@ -1,6 +1,5 @@
-return {
-	"nvim-tree/nvim-tree.lua",
-	opts = {
+return function()
+	require("nvim-tree").setup({
 		git = { enable = false },
 		view = { side = "right" },
 		sync_root_with_cwd = true,
@@ -30,5 +29,5 @@ return {
 				},
 			},
 		},
-	},
-}
+	})
+end

@@ -11,13 +11,9 @@ local lsp_filter = {
 	-- "Operator", "Package", "Property", "String", "TypeParameter", "Variable",
 }
 
-return {
-	"nvim-telescope/telescope.nvim",
-	version = "*",
-	dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-ui-select.nvim" },
-	config = function()
-		local actions = require("telescope.actions")
-		require("telescope").setup({
+return function()
+	local actions = require("telescope.actions")
+	require("telescope").setup({
 			defaults = {
 				wrap_results = true,
 				layout_strategy = "horizontal",
@@ -71,8 +67,7 @@ return {
 					}),
 				},
 			},
-		})
+	})
 
-		require("telescope").load_extension("ui-select")
-	end,
-}
+	require("telescope").load_extension("ui-select")
+end
